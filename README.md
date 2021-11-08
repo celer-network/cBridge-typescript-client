@@ -58,8 +58,6 @@ req.setMethodType(WithdrawMethodType.WD_METHOD_TYPE_ONE_RM);
 
 // rpc calling with gprc-web client
 
-WebClient
-
 const client = new WebClient(`${process.env.CBRIDEGE_TESTNET_URL}`, null, null);
 client.withdrawLiquidity(req, null)
 ```
