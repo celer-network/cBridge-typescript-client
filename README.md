@@ -28,6 +28,8 @@ npm install
 
 ### gRPC-web Refund request example
 
+testnet url: https://cbridge-v2-test.celer.network
+
 1. imports
 
 ```javascript
