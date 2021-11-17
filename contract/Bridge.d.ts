@@ -25,16 +25,22 @@ interface BridgeInterface extends ethers.utils.Interface {
     "addLiquidity(address,uint256)": FunctionFragment;
     "addPauser(address)": FunctionFragment;
     "addseq()": FunctionFragment;
+    "delayPeriod()": FunctionFragment;
+    "delayThresholds(address)": FunctionFragment;
+    "delayedTransfers(bytes32)": FunctionFragment;
+    "epochLength()": FunctionFragment;
     "epochVolumeCaps(address)": FunctionFragment;
     "epochVolumes(address)": FunctionFragment;
+    "executeDelayedTransfer(bytes32)": FunctionFragment;
     "governors(address)": FunctionFragment;
     "increaseNoticePeriod(uint256)": FunctionFragment;
     "isGovernor(address)": FunctionFragment;
     "isPauser(address)": FunctionFragment;
-    "lastOpBlks(address)": FunctionFragment;
-    "mams()": FunctionFragment;
+    "lastOpTimestamps(address)": FunctionFragment;
     "maxSend(address)": FunctionFragment;
+    "minAdd(address)": FunctionFragment;
     "minSend(address)": FunctionFragment;
+    "minimalMaxSlippage()": FunctionFragment;
     "nativeWrap()": FunctionFragment;
     "noticePeriod()": FunctionFragment;
     "notifyResetSigners()": FunctionFragment;
@@ -51,11 +57,14 @@ interface BridgeInterface extends ethers.utils.Interface {
     "resetSigners(address[],uint256[])": FunctionFragment;
     "resetTime()": FunctionFragment;
     "send(address,address,uint256,uint64,uint64,uint32)": FunctionFragment;
+    "setDelayPeriod(uint256)": FunctionFragment;
+    "setDelayThresholds(address[],uint256[])": FunctionFragment;
     "setEpochLength(uint256)": FunctionFragment;
     "setEpochVolumeCaps(address[],uint256[])": FunctionFragment;
     "setMaxSend(address[],uint256[])": FunctionFragment;
+    "setMinAdd(address[],uint256[])": FunctionFragment;
     "setMinSend(address[],uint256[])": FunctionFragment;
-    "setMinSlippage(uint32)": FunctionFragment;
+    "setMinimalMaxSlippage(uint32)": FunctionFragment;
     "setWrap(address)": FunctionFragment;
     "ssHash()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
@@ -75,12 +84,32 @@ interface BridgeInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "addPauser", values: [string]): string;
   encodeFunctionData(functionFragment: "addseq", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "delayPeriod",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "delayThresholds",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "delayedTransfers",
+    values: [BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "epochLength",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "epochVolumeCaps",
     values: [string]
   ): string;
   encodeFunctionData(
     functionFragment: "epochVolumes",
     values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "executeDelayedTransfer",
+    values: [BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "governors", values: [string]): string;
   encodeFunctionData(
@@ -89,10 +118,17 @@ interface BridgeInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "isGovernor", values: [string]): string;
   encodeFunctionData(functionFragment: "isPauser", values: [string]): string;
-  encodeFunctionData(functionFragment: "lastOpBlks", values: [string]): string;
-  encodeFunctionData(functionFragment: "mams", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "lastOpTimestamps",
+    values: [string]
+  ): string;
   encodeFunctionData(functionFragment: "maxSend", values: [string]): string;
+  encodeFunctionData(functionFragment: "minAdd", values: [string]): string;
   encodeFunctionData(functionFragment: "minSend", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "minimalMaxSlippage",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "nativeWrap",
     values?: undefined
@@ -150,6 +186,14 @@ interface BridgeInterface extends ethers.utils.Interface {
     ]
   ): string;
   encodeFunctionData(
+    functionFragment: "setDelayPeriod",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setDelayThresholds",
+    values: [string[], BigNumberish[]]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setEpochLength",
     values: [BigNumberish]
   ): string;
@@ -162,11 +206,15 @@ interface BridgeInterface extends ethers.utils.Interface {
     values: [string[], BigNumberish[]]
   ): string;
   encodeFunctionData(
+    functionFragment: "setMinAdd",
+    values: [string[], BigNumberish[]]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setMinSend",
     values: [string[], BigNumberish[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "setMinSlippage",
+    functionFragment: "setMinimalMaxSlippage",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "setWrap", values: [string]): string;
@@ -205,11 +253,31 @@ interface BridgeInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "addPauser", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "addseq", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "delayPeriod",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "delayThresholds",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "delayedTransfers",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "epochLength",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "epochVolumeCaps",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "epochVolumes",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "executeDelayedTransfer",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "governors", data: BytesLike): Result;
@@ -219,10 +287,17 @@ interface BridgeInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "isGovernor", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "isPauser", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "lastOpBlks", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "mams", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "lastOpTimestamps",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "maxSend", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "minAdd", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "minSend", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "minimalMaxSlippage",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "nativeWrap", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "noticePeriod",
@@ -264,6 +339,14 @@ interface BridgeInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "resetTime", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "send", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "setDelayPeriod",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setDelayThresholds",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "setEpochLength",
     data: BytesLike
   ): Result;
@@ -272,9 +355,10 @@ interface BridgeInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "setMaxSend", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setMinAdd", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setMinSend", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "setMinSlippage",
+    functionFragment: "setMinimalMaxSlippage",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "setWrap", data: BytesLike): Result;
@@ -294,12 +378,17 @@ interface BridgeInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "withdraws", data: BytesLike): Result;
 
   events: {
+    "DelayPeriodUpdated(uint256)": EventFragment;
+    "DelayThresholdUpdated(address,uint256)": EventFragment;
+    "DelayedTransferAdded(bytes32)": EventFragment;
+    "DelayedTransferExecuted(bytes32,address,address,uint256)": EventFragment;
     "EpochLengthUpdated(uint256)": EventFragment;
     "EpochVolumeUpdated(address,uint256)": EventFragment;
     "GovernorAdded(address)": EventFragment;
     "GovernorRemoved(address)": EventFragment;
     "LiquidityAdded(uint64,address,address,uint256)": EventFragment;
     "MaxSendUpdated(address,uint256)": EventFragment;
+    "MinAddUpdated(address,uint256)": EventFragment;
     "MinSendUpdated(address,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
     "Paused(address)": EventFragment;
@@ -313,12 +402,17 @@ interface BridgeInterface extends ethers.utils.Interface {
     "WithdrawDone(bytes32,uint64,address,address,uint256,bytes32)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "DelayPeriodUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "DelayThresholdUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "DelayedTransferAdded"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "DelayedTransferExecuted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "EpochLengthUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "EpochVolumeUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "GovernorAdded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "GovernorRemoved"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "LiquidityAdded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MaxSendUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "MinAddUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MinSendUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
@@ -394,12 +488,38 @@ export class Bridge extends BaseContract {
 
     addseq(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    delayPeriod(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    delayThresholds(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    delayedTransfers(
+      arg0: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, string, BigNumber, BigNumber] & {
+        receiver: string;
+        token: string;
+        amount: BigNumber;
+        timestamp: BigNumber;
+      }
+    >;
+
+    epochLength(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     epochVolumeCaps(
       arg0: string,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
     epochVolumes(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    executeDelayedTransfer(
+      id: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     governors(arg0: string, overrides?: CallOverrides): Promise<[boolean]>;
 
@@ -412,13 +532,18 @@ export class Bridge extends BaseContract {
 
     isPauser(account: string, overrides?: CallOverrides): Promise<[boolean]>;
 
-    lastOpBlks(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    mams(overrides?: CallOverrides): Promise<[number]>;
+    lastOpTimestamps(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     maxSend(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    minAdd(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
     minSend(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    minimalMaxSlippage(overrides?: CallOverrides): Promise<[number]>;
 
     nativeWrap(overrides?: CallOverrides): Promise<[string]>;
 
@@ -486,6 +611,17 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    setDelayPeriod(
+      _period: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setDelayThresholds(
+      _tokens: string[],
+      _thresholds: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     setEpochLength(
       _length: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -503,14 +639,20 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    setMinAdd(
+      _tokens: string[],
+      _amounts: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     setMinSend(
       _tokens: string[],
       _amounts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    setMinSlippage(
-      _minslip: BigNumberish,
+    setMinimalMaxSlippage(
+      _minimalMaxSlippage: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -578,9 +720,32 @@ export class Bridge extends BaseContract {
 
   addseq(overrides?: CallOverrides): Promise<BigNumber>;
 
+  delayPeriod(overrides?: CallOverrides): Promise<BigNumber>;
+
+  delayThresholds(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  delayedTransfers(
+    arg0: BytesLike,
+    overrides?: CallOverrides
+  ): Promise<
+    [string, string, BigNumber, BigNumber] & {
+      receiver: string;
+      token: string;
+      amount: BigNumber;
+      timestamp: BigNumber;
+    }
+  >;
+
+  epochLength(overrides?: CallOverrides): Promise<BigNumber>;
+
   epochVolumeCaps(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
   epochVolumes(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  executeDelayedTransfer(
+    id: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   governors(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -593,13 +758,15 @@ export class Bridge extends BaseContract {
 
   isPauser(account: string, overrides?: CallOverrides): Promise<boolean>;
 
-  lastOpBlks(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  mams(overrides?: CallOverrides): Promise<number>;
+  lastOpTimestamps(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
   maxSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
+  minAdd(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
   minSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  minimalMaxSlippage(overrides?: CallOverrides): Promise<number>;
 
   nativeWrap(overrides?: CallOverrides): Promise<string>;
 
@@ -667,6 +834,17 @@ export class Bridge extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  setDelayPeriod(
+    _period: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setDelayThresholds(
+    _tokens: string[],
+    _thresholds: BigNumberish[],
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   setEpochLength(
     _length: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -684,14 +862,20 @@ export class Bridge extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  setMinAdd(
+    _tokens: string[],
+    _amounts: BigNumberish[],
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   setMinSend(
     _tokens: string[],
     _amounts: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  setMinSlippage(
-    _minslip: BigNumberish,
+  setMinimalMaxSlippage(
+    _minimalMaxSlippage: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -753,12 +937,38 @@ export class Bridge extends BaseContract {
 
     addseq(overrides?: CallOverrides): Promise<BigNumber>;
 
+    delayPeriod(overrides?: CallOverrides): Promise<BigNumber>;
+
+    delayThresholds(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    delayedTransfers(
+      arg0: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, string, BigNumber, BigNumber] & {
+        receiver: string;
+        token: string;
+        amount: BigNumber;
+        timestamp: BigNumber;
+      }
+    >;
+
+    epochLength(overrides?: CallOverrides): Promise<BigNumber>;
+
     epochVolumeCaps(
       arg0: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     epochVolumes(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    executeDelayedTransfer(
+      id: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     governors(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -771,13 +981,18 @@ export class Bridge extends BaseContract {
 
     isPauser(account: string, overrides?: CallOverrides): Promise<boolean>;
 
-    lastOpBlks(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    mams(overrides?: CallOverrides): Promise<number>;
+    lastOpTimestamps(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     maxSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
+    minAdd(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
     minSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    minimalMaxSlippage(overrides?: CallOverrides): Promise<number>;
 
     nativeWrap(overrides?: CallOverrides): Promise<string>;
 
@@ -829,6 +1044,17 @@ export class Bridge extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    setDelayPeriod(
+      _period: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setDelayThresholds(
+      _tokens: string[],
+      _thresholds: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     setEpochLength(
       _length: BigNumberish,
       overrides?: CallOverrides
@@ -846,14 +1072,20 @@ export class Bridge extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    setMinAdd(
+      _tokens: string[],
+      _amounts: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     setMinSend(
       _tokens: string[],
       _amounts: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setMinSlippage(
-      _minslip: BigNumberish,
+    setMinimalMaxSlippage(
+      _minimalMaxSlippage: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -899,6 +1131,30 @@ export class Bridge extends BaseContract {
   };
 
   filters: {
+    DelayPeriodUpdated(
+      period?: null
+    ): TypedEventFilter<[BigNumber], { period: BigNumber }>;
+
+    DelayThresholdUpdated(
+      token?: null,
+      threshold?: null
+    ): TypedEventFilter<
+      [string, BigNumber],
+      { token: string; threshold: BigNumber }
+    >;
+
+    DelayedTransferAdded(id?: null): TypedEventFilter<[string], { id: string }>;
+
+    DelayedTransferExecuted(
+      id?: null,
+      receiver?: null,
+      token?: null,
+      amount?: null
+    ): TypedEventFilter<
+      [string, string, string, BigNumber],
+      { id: string; receiver: string; token: string; amount: BigNumber }
+    >;
+
     EpochLengthUpdated(
       length?: null
     ): TypedEventFilter<[BigNumber], { length: BigNumber }>;
@@ -927,6 +1183,14 @@ export class Bridge extends BaseContract {
     >;
 
     MaxSendUpdated(
+      token?: null,
+      amount?: null
+    ): TypedEventFilter<
+      [string, BigNumber],
+      { token: string; amount: BigNumber }
+    >;
+
+    MinAddUpdated(
       token?: null,
       amount?: null
     ): TypedEventFilter<
@@ -1057,12 +1321,31 @@ export class Bridge extends BaseContract {
 
     addseq(overrides?: CallOverrides): Promise<BigNumber>;
 
+    delayPeriod(overrides?: CallOverrides): Promise<BigNumber>;
+
+    delayThresholds(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    delayedTransfers(
+      arg0: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    epochLength(overrides?: CallOverrides): Promise<BigNumber>;
+
     epochVolumeCaps(
       arg0: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     epochVolumes(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    executeDelayedTransfer(
+      id: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
 
     governors(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1075,13 +1358,18 @@ export class Bridge extends BaseContract {
 
     isPauser(account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    lastOpBlks(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    mams(overrides?: CallOverrides): Promise<BigNumber>;
+    lastOpTimestamps(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     maxSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
+    minAdd(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
     minSend(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    minimalMaxSlippage(overrides?: CallOverrides): Promise<BigNumber>;
 
     nativeWrap(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1149,6 +1437,17 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    setDelayPeriod(
+      _period: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setDelayThresholds(
+      _tokens: string[],
+      _thresholds: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     setEpochLength(
       _length: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -1166,14 +1465,20 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    setMinAdd(
+      _tokens: string[],
+      _amounts: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     setMinSend(
       _tokens: string[],
       _amounts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    setMinSlippage(
-      _minslip: BigNumberish,
+    setMinimalMaxSlippage(
+      _minimalMaxSlippage: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1242,6 +1547,20 @@ export class Bridge extends BaseContract {
 
     addseq(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    delayPeriod(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    delayThresholds(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    delayedTransfers(
+      arg0: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    epochLength(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     epochVolumeCaps(
       arg0: string,
       overrides?: CallOverrides
@@ -1250,6 +1569,11 @@ export class Bridge extends BaseContract {
     epochVolumes(
       arg0: string,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    executeDelayedTransfer(
+      id: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     governors(
@@ -1272,20 +1596,27 @@ export class Bridge extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    lastOpBlks(
+    lastOpTimestamps(
       arg0: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
-
-    mams(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     maxSend(
       arg0: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    minAdd(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     minSend(
       arg0: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    minimalMaxSlippage(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1358,6 +1689,17 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
+    setDelayPeriod(
+      _period: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setDelayThresholds(
+      _tokens: string[],
+      _thresholds: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
     setEpochLength(
       _length: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -1375,14 +1717,20 @@ export class Bridge extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
+    setMinAdd(
+      _tokens: string[],
+      _amounts: BigNumberish[],
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
     setMinSend(
       _tokens: string[],
       _amounts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    setMinSlippage(
-      _minslip: BigNumberish,
+    setMinimalMaxSlippage(
+      _minimalMaxSlippage: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
