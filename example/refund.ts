@@ -1,12 +1,18 @@
+// if use other RPC frame instead of axios, ignore this
 import axios from "axios";
+
+// sign the request message with ethers utils
 import { ethers } from "ethers";
 import { base64 } from "ethers/lib/utils";
-import { WithdrawReq, WithdrawType } from "../../ts-proto/sgn/cbridge/v1/tx_pb";
-import { WithdrawMethodType } from "../../ts-proto/sgn/gateway/v1/gateway_pb";
 
+import {
+  WithdrawReq,
+  WithdrawType,
+} from "../ts-proto/sgn/cbridge/v1/tx_pb";
+import { WithdrawMethodType } from "../ts-proto/sgn/gateway/v1/gateway_pb";
 
 /* eslint-disable camelcase */
-export const refund = async (transfer_id, estimated, signer) => {
+export const requestRestRefund = async (transfer_id, estimated, signer): Promise<any> => {
   const timestamp = Math.floor(Date.now() / 1000);
   const withdrawReqProto = new WithdrawReq();
   withdrawReqProto.setXferId(transfer_id);
@@ -22,12 +28,14 @@ export const refund = async (transfer_id, estimated, signer) => {
   const bytes = ethers.utils.arrayify(sig);
   const req = {
     withdraw_req: base64.encode(withdrawReqProto.serializeBinary() || ""),
-    sig: base64.encode(bytes || ""), 
+    sig: base64.encode(bytes || ""),
     estimated_received_amt: estimated,
     method_type: WithdrawMethodType.WD_METHOD_TYPE_ALL_IN_ONE,
   };
+
+  // use your preferred RPC framework
   return axios
-    // heads up to replace REACT_APP_SERVER_URL 
+      // heads up to replace REACT_APP_SERVER_URL 
     .post(`${process.env.REACT_APP_SERVER_URL}/v1/withdrawLiquidity`, {
       ...req,
     })
@@ -38,3 +46,4 @@ export const refund = async (transfer_id, estimated, signer) => {
       console.log("error=>", e);
     });
 };
+
