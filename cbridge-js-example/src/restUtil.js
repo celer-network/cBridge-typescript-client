@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ethers } from "ethers";
 import { base64 } from "ethers/lib/utils";
-import { WithdrawReq, WithdrawType } from "../ts-proto/sgn/cbridge/v1/tx_pb";
-import { WithdrawMethodType } from "../ts-proto/sgn/gateway/v1/gateway_pb";
+import { WithdrawReq, WithdrawType } from "../../ts-proto/sgn/cbridge/v1/tx_pb";
+import { WithdrawMethodType } from "../../ts-proto/sgn/gateway/v1/gateway_pb";
 
 
 /* eslint-disable camelcase */
