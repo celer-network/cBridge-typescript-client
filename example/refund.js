@@ -9,6 +9,11 @@ import { WithdrawReq, WithdrawType } from "../ts-proto/sgn/cbridge/v1/tx_pb";
 import { WithdrawMethodType } from "../ts-proto/sgn/gateway/v1/gateway_pb";
 
 /* eslint-disable camelcase */
+
+/* transfer_id: https://cbridge-docs.celer.network/developer/api-reference/contract-send#transferid-generation
+   estimated: string type of BigAmount
+   signer: signer of Web3Provider, https://docs.ethers.io/v4/cookbook-providers.html 
+*/
 export const refund = async (transfer_id, estimated, signer) => {
   const timestamp = Math.floor(Date.now() / 1000);
   const withdrawReqProto = new WithdrawReq();
