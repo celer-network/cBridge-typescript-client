@@ -17,23 +17,15 @@ import { WithdrawMethodType } from "../ts-proto/sgn/gateway/v1/gateway_pb";
    estimated: string type of BigAmount
    signer: signer of Web3Provider, https://docs.ethers.io/v4/cookbook-providers.html 
 */
-export const requestRestRefund = async (transfer_id, estimated, signer): Promise<any> => {
+export const requestRestRefund = async (transfer_id, estimated): Promise<any> => {
   const timestamp = Math.floor(Date.now() / 1000);
   const withdrawReqProto = new WithdrawReq();
   withdrawReqProto.setXferId(transfer_id);
   withdrawReqProto.setReqId(timestamp);
   withdrawReqProto.setWithdrawType(WithdrawType.WITHDRAW_TYPE_REFUND_TRANSFER);
-  let sig;
-  try {
-    sig = await signer.signMessage(ethers.utils.arrayify(ethers.utils.keccak256(withdrawReqProto.serializeBinary())));
-  } catch (error) {
-    console.log(error);
-  }
-
-  const bytes = ethers.utils.arrayify(sig);
+ 
   const req = {
     withdraw_req: base64.encode(withdrawReqProto.serializeBinary() || ""),
-    sig: base64.encode(bytes || ""),
     estimated_received_amt: estimated,
     method_type: WithdrawMethodType.WD_METHOD_TYPE_ALL_IN_ONE,
   };
