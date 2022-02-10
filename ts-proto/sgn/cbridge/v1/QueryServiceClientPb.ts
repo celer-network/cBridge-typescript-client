@@ -35,6 +35,436 @@ export class QueryClient {
     this.options_ = options;
   }
 
+  methodInfoQueryParams = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryParams',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.EmptyRequest,
+    sgn_cbridge_v1_query_pb.QueryParamsResponse,
+    (request: sgn_cbridge_v1_query_pb.EmptyRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryParamsResponse.deserializeBinary
+  );
+
+  queryParams(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryParamsResponse>;
+
+  queryParams(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryParamsResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryParamsResponse>;
+
+  queryParams(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryParamsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryParams',
+        request,
+        metadata || {},
+        this.methodInfoQueryParams,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryParams',
+    request,
+    metadata || {},
+    this.methodInfoQueryParams);
+  }
+
+  methodInfoQueryConfig = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryConfig',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.EmptyRequest,
+    sgn_cbridge_v1_query_pb.QueryConfigResponse,
+    (request: sgn_cbridge_v1_query_pb.EmptyRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryConfigResponse.deserializeBinary
+  );
+
+  queryConfig(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryConfigResponse>;
+
+  queryConfig(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryConfigResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryConfigResponse>;
+
+  queryConfig(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryConfigResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryConfig',
+        request,
+        metadata || {},
+        this.methodInfoQueryConfig,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryConfig',
+    request,
+    metadata || {},
+    this.methodInfoQueryConfig);
+  }
+
+  methodInfoQueryRelay = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryRelay',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.QueryRelayRequest,
+    sgn_cbridge_v1_query_pb.QueryRelayResponse,
+    (request: sgn_cbridge_v1_query_pb.QueryRelayRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryRelayResponse.deserializeBinary
+  );
+
+  queryRelay(
+    request: sgn_cbridge_v1_query_pb.QueryRelayRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryRelayResponse>;
+
+  queryRelay(
+    request: sgn_cbridge_v1_query_pb.QueryRelayRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryRelayResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryRelayResponse>;
+
+  queryRelay(
+    request: sgn_cbridge_v1_query_pb.QueryRelayRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryRelayResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryRelay',
+        request,
+        metadata || {},
+        this.methodInfoQueryRelay,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryRelay',
+    request,
+    metadata || {},
+    this.methodInfoQueryRelay);
+  }
+
+  methodInfoQueryChainSigners = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryChainSigners',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.QueryChainSignersRequest,
+    sgn_cbridge_v1_query_pb.QueryChainSignersResponse,
+    (request: sgn_cbridge_v1_query_pb.QueryChainSignersRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryChainSignersResponse.deserializeBinary
+  );
+
+  queryChainSigners(
+    request: sgn_cbridge_v1_query_pb.QueryChainSignersRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryChainSignersResponse>;
+
+  queryChainSigners(
+    request: sgn_cbridge_v1_query_pb.QueryChainSignersRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryChainSignersResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryChainSignersResponse>;
+
+  queryChainSigners(
+    request: sgn_cbridge_v1_query_pb.QueryChainSignersRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryChainSignersResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryChainSigners',
+        request,
+        metadata || {},
+        this.methodInfoQueryChainSigners,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryChainSigners',
+    request,
+    metadata || {},
+    this.methodInfoQueryChainSigners);
+  }
+
+  methodInfoQueryLatestSigners = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryLatestSigners',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.EmptyRequest,
+    sgn_cbridge_v1_query_pb.QueryLatestSignersResponse,
+    (request: sgn_cbridge_v1_query_pb.EmptyRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryLatestSignersResponse.deserializeBinary
+  );
+
+  queryLatestSigners(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryLatestSignersResponse>;
+
+  queryLatestSigners(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryLatestSignersResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryLatestSignersResponse>;
+
+  queryLatestSigners(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryLatestSignersResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryLatestSigners',
+        request,
+        metadata || {},
+        this.methodInfoQueryLatestSigners,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryLatestSigners',
+    request,
+    metadata || {},
+    this.methodInfoQueryLatestSigners);
+  }
+
+  methodInfoQueryCheckChainTokenValid = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryCheckChainTokenValid',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.CheckChainTokenValidRequest,
+    sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse,
+    (request: sgn_cbridge_v1_query_pb.CheckChainTokenValidRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse.deserializeBinary
+  );
+
+  queryCheckChainTokenValid(
+    request: sgn_cbridge_v1_query_pb.CheckChainTokenValidRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse>;
+
+  queryCheckChainTokenValid(
+    request: sgn_cbridge_v1_query_pb.CheckChainTokenValidRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse>;
+
+  queryCheckChainTokenValid(
+    request: sgn_cbridge_v1_query_pb.CheckChainTokenValidRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.CheckChainTokenValidResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryCheckChainTokenValid',
+        request,
+        metadata || {},
+        this.methodInfoQueryCheckChainTokenValid,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryCheckChainTokenValid',
+    request,
+    metadata || {},
+    this.methodInfoQueryCheckChainTokenValid);
+  }
+
+  methodInfoQueryChkLiqSum = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryChkLiqSum',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.CheckLiqSumRequest,
+    sgn_cbridge_v1_query_pb.CheckLiqSumResponse,
+    (request: sgn_cbridge_v1_query_pb.CheckLiqSumRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.CheckLiqSumResponse.deserializeBinary
+  );
+
+  queryChkLiqSum(
+    request: sgn_cbridge_v1_query_pb.CheckLiqSumRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.CheckLiqSumResponse>;
+
+  queryChkLiqSum(
+    request: sgn_cbridge_v1_query_pb.CheckLiqSumRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.CheckLiqSumResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.CheckLiqSumResponse>;
+
+  queryChkLiqSum(
+    request: sgn_cbridge_v1_query_pb.CheckLiqSumRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.CheckLiqSumResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryChkLiqSum',
+        request,
+        metadata || {},
+        this.methodInfoQueryChkLiqSum,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryChkLiqSum',
+    request,
+    metadata || {},
+    this.methodInfoQueryChkLiqSum);
+  }
+
+  methodInfoQueryDebugAny = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryDebugAny',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.QueryDebugAnyRequest,
+    sgn_cbridge_v1_query_pb.QueryDebugAnyResponse,
+    (request: sgn_cbridge_v1_query_pb.QueryDebugAnyRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryDebugAnyResponse.deserializeBinary
+  );
+
+  queryDebugAny(
+    request: sgn_cbridge_v1_query_pb.QueryDebugAnyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryDebugAnyResponse>;
+
+  queryDebugAny(
+    request: sgn_cbridge_v1_query_pb.QueryDebugAnyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryDebugAnyResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryDebugAnyResponse>;
+
+  queryDebugAny(
+    request: sgn_cbridge_v1_query_pb.QueryDebugAnyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryDebugAnyResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryDebugAny',
+        request,
+        metadata || {},
+        this.methodInfoQueryDebugAny,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryDebugAny',
+    request,
+    metadata || {},
+    this.methodInfoQueryDebugAny);
+  }
+
+  methodInfoQueryAssets = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryAssets',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.EmptyRequest,
+    sgn_cbridge_v1_query_pb.QueryAssetsResponse,
+    (request: sgn_cbridge_v1_query_pb.EmptyRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryAssetsResponse.deserializeBinary
+  );
+
+  queryAssets(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryAssetsResponse>;
+
+  queryAssets(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryAssetsResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryAssetsResponse>;
+
+  queryAssets(
+    request: sgn_cbridge_v1_query_pb.EmptyRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryAssetsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryAssets',
+        request,
+        metadata || {},
+        this.methodInfoQueryAssets,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryAssets',
+    request,
+    metadata || {},
+    this.methodInfoQueryAssets);
+  }
+
+  methodInfoQueryAssetPrice = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryAssetPrice',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.QueryAssetPriceRequest,
+    sgn_cbridge_v1_query_pb.QueryAssetPriceResponse,
+    (request: sgn_cbridge_v1_query_pb.QueryAssetPriceRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryAssetPriceResponse.deserializeBinary
+  );
+
+  queryAssetPrice(
+    request: sgn_cbridge_v1_query_pb.QueryAssetPriceRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryAssetPriceResponse>;
+
+  queryAssetPrice(
+    request: sgn_cbridge_v1_query_pb.QueryAssetPriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryAssetPriceResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryAssetPriceResponse>;
+
+  queryAssetPrice(
+    request: sgn_cbridge_v1_query_pb.QueryAssetPriceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryAssetPriceResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryAssetPrice',
+        request,
+        metadata || {},
+        this.methodInfoQueryAssetPrice,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryAssetPrice',
+    request,
+    metadata || {},
+    this.methodInfoQueryAssetPrice);
+  }
+
   methodInfoChainTokensConfig = new grpcWeb.MethodDescriptor(
     '/sgn.cbridge.v1.Query/ChainTokensConfig',
     grpcWeb.MethodType.UNARY,
@@ -377,6 +807,49 @@ export class QueryClient {
     request,
     metadata || {},
     this.methodInfoQueryWithdrawLiquidityStatus);
+  }
+
+  methodInfoQueryLPs = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Query/QueryLPs',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_query_pb.QueryLPsRequest,
+    sgn_cbridge_v1_query_pb.QueryLPsResponse,
+    (request: sgn_cbridge_v1_query_pb.QueryLPsRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_query_pb.QueryLPsResponse.deserializeBinary
+  );
+
+  queryLPs(
+    request: sgn_cbridge_v1_query_pb.QueryLPsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_query_pb.QueryLPsResponse>;
+
+  queryLPs(
+    request: sgn_cbridge_v1_query_pb.QueryLPsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryLPsResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_query_pb.QueryLPsResponse>;
+
+  queryLPs(
+    request: sgn_cbridge_v1_query_pb.QueryLPsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_query_pb.QueryLPsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Query/QueryLPs',
+        request,
+        metadata || {},
+        this.methodInfoQueryLPs,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Query/QueryLPs',
+    request,
+    metadata || {},
+    this.methodInfoQueryLPs);
   }
 
 }

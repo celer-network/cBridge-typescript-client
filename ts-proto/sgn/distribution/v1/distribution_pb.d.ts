@@ -25,6 +25,11 @@ export class Params extends jspb.Message {
   hasClaimCooldown(): boolean;
   clearClaimCooldown(): Params;
 
+  getRewardContract(): sgn_common_v1_common_pb.ContractInfo | undefined;
+  setRewardContract(value?: sgn_common_v1_common_pb.ContractInfo): Params;
+  hasRewardContract(): boolean;
+  clearRewardContract(): Params;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Params.AsObject;
   static toObject(includeInstance: boolean, msg: Params): Params.AsObject;
@@ -40,6 +45,7 @@ export namespace Params {
     bonusProposerReward: string,
     withdrawAddrEnabled: boolean,
     claimCooldown?: google_protobuf_duration_pb.Duration.AsObject,
+    rewardContract?: sgn_common_v1_common_pb.ContractInfo.AsObject,
   }
 }
 
@@ -128,48 +134,6 @@ export class ValidatorOutstandingRewards extends jspb.Message {
 export namespace ValidatorOutstandingRewards {
   export type AsObject = {
     rewardsList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
-  }
-}
-
-export class ValidatorSlashEvent extends jspb.Message {
-  getValidatorPeriod(): number;
-  setValidatorPeriod(value: number): ValidatorSlashEvent;
-
-  getFraction(): string;
-  setFraction(value: string): ValidatorSlashEvent;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ValidatorSlashEvent.AsObject;
-  static toObject(includeInstance: boolean, msg: ValidatorSlashEvent): ValidatorSlashEvent.AsObject;
-  static serializeBinaryToWriter(message: ValidatorSlashEvent, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ValidatorSlashEvent;
-  static deserializeBinaryFromReader(message: ValidatorSlashEvent, reader: jspb.BinaryReader): ValidatorSlashEvent;
-}
-
-export namespace ValidatorSlashEvent {
-  export type AsObject = {
-    validatorPeriod: number,
-    fraction: string,
-  }
-}
-
-export class ValidatorSlashEvents extends jspb.Message {
-  getValidatorSlashEventsList(): Array<ValidatorSlashEvent>;
-  setValidatorSlashEventsList(value: Array<ValidatorSlashEvent>): ValidatorSlashEvents;
-  clearValidatorSlashEventsList(): ValidatorSlashEvents;
-  addValidatorSlashEvents(value?: ValidatorSlashEvent, index?: number): ValidatorSlashEvent;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ValidatorSlashEvents.AsObject;
-  static toObject(includeInstance: boolean, msg: ValidatorSlashEvents): ValidatorSlashEvents.AsObject;
-  static serializeBinaryToWriter(message: ValidatorSlashEvents, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ValidatorSlashEvents;
-  static deserializeBinaryFromReader(message: ValidatorSlashEvents, reader: jspb.BinaryReader): ValidatorSlashEvents;
-}
-
-export namespace ValidatorSlashEvents {
-  export type AsObject = {
-    validatorSlashEventsList: Array<ValidatorSlashEvent.AsObject>,
   }
 }
 
@@ -343,23 +307,49 @@ export namespace StakingRewardClaimInfo {
   }
 }
 
-export class CBridgeFeeShareInfo extends jspb.Message {
+export class ClaimableFeesInfo extends jspb.Message {
   getClaimableFeeAmountsList(): Array<cosmos_base_v1beta1_coin_pb.DecCoin>;
-  setClaimableFeeAmountsList(value: Array<cosmos_base_v1beta1_coin_pb.DecCoin>): CBridgeFeeShareInfo;
-  clearClaimableFeeAmountsList(): CBridgeFeeShareInfo;
+  setClaimableFeeAmountsList(value: Array<cosmos_base_v1beta1_coin_pb.DecCoin>): ClaimableFeesInfo;
+  clearClaimableFeeAmountsList(): ClaimableFeesInfo;
   addClaimableFeeAmounts(value?: cosmos_base_v1beta1_coin_pb.DecCoin, index?: number): cosmos_base_v1beta1_coin_pb.DecCoin;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CBridgeFeeShareInfo.AsObject;
-  static toObject(includeInstance: boolean, msg: CBridgeFeeShareInfo): CBridgeFeeShareInfo.AsObject;
-  static serializeBinaryToWriter(message: CBridgeFeeShareInfo, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CBridgeFeeShareInfo;
-  static deserializeBinaryFromReader(message: CBridgeFeeShareInfo, reader: jspb.BinaryReader): CBridgeFeeShareInfo;
+  toObject(includeInstance?: boolean): ClaimableFeesInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: ClaimableFeesInfo): ClaimableFeesInfo.AsObject;
+  static serializeBinaryToWriter(message: ClaimableFeesInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ClaimableFeesInfo;
+  static deserializeBinaryFromReader(message: ClaimableFeesInfo, reader: jspb.BinaryReader): ClaimableFeesInfo;
 }
 
-export namespace CBridgeFeeShareInfo {
+export namespace ClaimableFeesInfo {
   export type AsObject = {
     claimableFeeAmountsList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
+  }
+}
+
+export class StakingRewardOnChain extends jspb.Message {
+  getRecipient(): Uint8Array | string;
+  getRecipient_asU8(): Uint8Array;
+  getRecipient_asB64(): string;
+  setRecipient(value: Uint8Array | string): StakingRewardOnChain;
+
+  getCumulativeRewardAmount(): Uint8Array | string;
+  getCumulativeRewardAmount_asU8(): Uint8Array;
+  getCumulativeRewardAmount_asB64(): string;
+  setCumulativeRewardAmount(value: Uint8Array | string): StakingRewardOnChain;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StakingRewardOnChain.AsObject;
+  static toObject(includeInstance: boolean, msg: StakingRewardOnChain): StakingRewardOnChain.AsObject;
+  static serializeBinaryToWriter(message: StakingRewardOnChain, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StakingRewardOnChain;
+  static deserializeBinaryFromReader(message: StakingRewardOnChain, reader: jspb.BinaryReader): StakingRewardOnChain;
+}
+
+export namespace StakingRewardOnChain {
+  export type AsObject = {
+    recipient: Uint8Array | string,
+    cumulativeRewardAmount: Uint8Array | string,
   }
 }
 

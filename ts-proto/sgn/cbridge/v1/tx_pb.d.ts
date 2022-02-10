@@ -13,10 +13,10 @@ export class MsgSendMySig extends jspb.Message {
   getData_asB64(): string;
   setData(value: Uint8Array | string): MsgSendMySig;
 
-  getMySig(): Uint8Array | string;
-  getMySig_asU8(): Uint8Array;
-  getMySig_asB64(): string;
-  setMySig(value: Uint8Array | string): MsgSendMySig;
+  getMySigsList(): Array<MySig>;
+  setMySigsList(value: Array<MySig>): MsgSendMySig;
+  clearMySigsList(): MsgSendMySig;
+  addMySigs(value?: MySig, index?: number): MySig;
 
   getCreator(): string;
   setCreator(value: string): MsgSendMySig;
@@ -33,8 +33,32 @@ export namespace MsgSendMySig {
   export type AsObject = {
     datatype: SignDataType,
     data: Uint8Array | string,
-    mySig: Uint8Array | string,
+    mySigsList: Array<MySig.AsObject>,
     creator: string,
+  }
+}
+
+export class MySig extends jspb.Message {
+  getChainId(): number;
+  setChainId(value: number): MySig;
+
+  getSig(): Uint8Array | string;
+  getSig_asU8(): Uint8Array;
+  getSig_asB64(): string;
+  setSig(value: Uint8Array | string): MySig;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MySig.AsObject;
+  static toObject(includeInstance: boolean, msg: MySig): MySig.AsObject;
+  static serializeBinaryToWriter(message: MySig, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MySig;
+  static deserializeBinaryFromReader(message: MySig, reader: jspb.BinaryReader): MySig;
+}
+
+export namespace MySig {
+  export type AsObject = {
+    chainId: number,
+    sig: Uint8Array | string,
   }
 }
 
@@ -163,6 +187,9 @@ export namespace MsgInitWithdrawResp {
 }
 
 export class MsgSignAgain extends jspb.Message {
+  getDataType(): SignDataType;
+  setDataType(value: SignDataType): MsgSignAgain;
+
   getUserAddr(): Uint8Array | string;
   getUserAddr_asU8(): Uint8Array;
   getUserAddr_asB64(): string;
@@ -170,6 +197,11 @@ export class MsgSignAgain extends jspb.Message {
 
   getReqId(): number;
   setReqId(value: number): MsgSignAgain;
+
+  getXferId(): Uint8Array | string;
+  getXferId_asU8(): Uint8Array;
+  getXferId_asB64(): string;
+  setXferId(value: Uint8Array | string): MsgSignAgain;
 
   getCreator(): string;
   setCreator(value: string): MsgSignAgain;
@@ -184,8 +216,10 @@ export class MsgSignAgain extends jspb.Message {
 
 export namespace MsgSignAgain {
   export type AsObject = {
+    dataType: SignDataType,
     userAddr: Uint8Array | string,
     reqId: number,
+    xferId: Uint8Array | string,
     creator: string,
   }
 }
@@ -200,6 +234,82 @@ export class MsgSignAgainResp extends jspb.Message {
 }
 
 export namespace MsgSignAgainResp {
+  export type AsObject = {
+  }
+}
+
+export class MsgUpdateLatestSigners extends jspb.Message {
+  getCreator(): string;
+  setCreator(value: string): MsgUpdateLatestSigners;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateLatestSigners.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateLatestSigners): MsgUpdateLatestSigners.AsObject;
+  static serializeBinaryToWriter(message: MsgUpdateLatestSigners, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateLatestSigners;
+  static deserializeBinaryFromReader(message: MsgUpdateLatestSigners, reader: jspb.BinaryReader): MsgUpdateLatestSigners;
+}
+
+export namespace MsgUpdateLatestSigners {
+  export type AsObject = {
+    creator: string,
+  }
+}
+
+export class MsgUpdateLatestSignersResp extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgUpdateLatestSignersResp.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgUpdateLatestSignersResp): MsgUpdateLatestSignersResp.AsObject;
+  static serializeBinaryToWriter(message: MsgUpdateLatestSignersResp, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgUpdateLatestSignersResp;
+  static deserializeBinaryFromReader(message: MsgUpdateLatestSignersResp, reader: jspb.BinaryReader): MsgUpdateLatestSignersResp;
+}
+
+export namespace MsgUpdateLatestSignersResp {
+  export type AsObject = {
+  }
+}
+
+export class MsgSyncFarming extends jspb.Message {
+  getLpAddress(): string;
+  setLpAddress(value: string): MsgSyncFarming;
+
+  getChainId(): number;
+  setChainId(value: number): MsgSyncFarming;
+
+  getTokenAddress(): string;
+  setTokenAddress(value: string): MsgSyncFarming;
+
+  getCreator(): string;
+  setCreator(value: string): MsgSyncFarming;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgSyncFarming.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgSyncFarming): MsgSyncFarming.AsObject;
+  static serializeBinaryToWriter(message: MsgSyncFarming, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgSyncFarming;
+  static deserializeBinaryFromReader(message: MsgSyncFarming, reader: jspb.BinaryReader): MsgSyncFarming;
+}
+
+export namespace MsgSyncFarming {
+  export type AsObject = {
+    lpAddress: string,
+    chainId: number,
+    tokenAddress: string,
+    creator: string,
+  }
+}
+
+export class MsgSyncFarmingResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): MsgSyncFarmingResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: MsgSyncFarmingResponse): MsgSyncFarmingResponse.AsObject;
+  static serializeBinaryToWriter(message: MsgSyncFarmingResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): MsgSyncFarmingResponse;
+  static deserializeBinaryFromReader(message: MsgSyncFarmingResponse, reader: jspb.BinaryReader): MsgSyncFarmingResponse;
+}
+
+export namespace MsgSyncFarmingResponse {
   export type AsObject = {
   }
 }
@@ -236,6 +346,7 @@ export enum WithdrawType {
   WITHDRAW_TYPE_REMOVE_LIQUIDITY = 0,
   WITHDRAW_TYPE_REFUND_TRANSFER = 1,
   WITHDRAW_TYPE_CLAIM_FEE_SHARE = 2,
+  WITHDRAW_TYPE_VALIDATOR_CLAIM_FEE_SHARE = 3,
 }
 export enum ErrCode { 
   UNDEFINED = 0,
@@ -249,4 +360,5 @@ export enum ErrCode {
   XFER_NOT_REFUNDABLE = 10,
   XFER_REFUND_STARTED = 11,
   WD_INTERNAL_XFER_FAILURE = 12,
+  WD_EXCEED_MAX_OUT_AMOUNT = 13,
 }

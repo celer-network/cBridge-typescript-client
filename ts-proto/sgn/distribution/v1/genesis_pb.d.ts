@@ -155,38 +155,6 @@ export namespace DelegatorStartingInfoRecord {
   }
 }
 
-export class ValidatorSlashEventRecord extends jspb.Message {
-  getValidatorAddress(): string;
-  setValidatorAddress(value: string): ValidatorSlashEventRecord;
-
-  getHeight(): number;
-  setHeight(value: number): ValidatorSlashEventRecord;
-
-  getPeriod(): number;
-  setPeriod(value: number): ValidatorSlashEventRecord;
-
-  getValidatorSlashEvent(): sgn_distribution_v1_distribution_pb.ValidatorSlashEvent | undefined;
-  setValidatorSlashEvent(value?: sgn_distribution_v1_distribution_pb.ValidatorSlashEvent): ValidatorSlashEventRecord;
-  hasValidatorSlashEvent(): boolean;
-  clearValidatorSlashEvent(): ValidatorSlashEventRecord;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ValidatorSlashEventRecord.AsObject;
-  static toObject(includeInstance: boolean, msg: ValidatorSlashEventRecord): ValidatorSlashEventRecord.AsObject;
-  static serializeBinaryToWriter(message: ValidatorSlashEventRecord, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ValidatorSlashEventRecord;
-  static deserializeBinaryFromReader(message: ValidatorSlashEventRecord, reader: jspb.BinaryReader): ValidatorSlashEventRecord;
-}
-
-export namespace ValidatorSlashEventRecord {
-  export type AsObject = {
-    validatorAddress: string,
-    height: number,
-    period: number,
-    validatorSlashEvent?: sgn_distribution_v1_distribution_pb.ValidatorSlashEvent.AsObject,
-  }
-}
-
 export class GenesisState extends jspb.Message {
   getParams(): sgn_distribution_v1_distribution_pb.Params | undefined;
   setParams(value?: sgn_distribution_v1_distribution_pb.Params): GenesisState;
@@ -231,11 +199,6 @@ export class GenesisState extends jspb.Message {
   clearDelegatorStartingInfosList(): GenesisState;
   addDelegatorStartingInfos(value?: DelegatorStartingInfoRecord, index?: number): DelegatorStartingInfoRecord;
 
-  getValidatorSlashEventsList(): Array<ValidatorSlashEventRecord>;
-  setValidatorSlashEventsList(value: Array<ValidatorSlashEventRecord>): GenesisState;
-  clearValidatorSlashEventsList(): GenesisState;
-  addValidatorSlashEvents(value?: ValidatorSlashEventRecord, index?: number): ValidatorSlashEventRecord;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -255,7 +218,6 @@ export namespace GenesisState {
     validatorHistoricalRewardsList: Array<ValidatorHistoricalRewardsRecord.AsObject>,
     validatorCurrentRewardsList: Array<ValidatorCurrentRewardsRecord.AsObject>,
     delegatorStartingInfosList: Array<DelegatorStartingInfoRecord.AsObject>,
-    validatorSlashEventsList: Array<ValidatorSlashEventRecord.AsObject>,
   }
 }
 

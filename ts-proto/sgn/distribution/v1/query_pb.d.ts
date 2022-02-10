@@ -117,64 +117,6 @@ export namespace QueryValidatorCommissionResponse {
   }
 }
 
-export class QueryValidatorSlashesRequest extends jspb.Message {
-  getValidatorAddress(): string;
-  setValidatorAddress(value: string): QueryValidatorSlashesRequest;
-
-  getStartingHeight(): number;
-  setStartingHeight(value: number): QueryValidatorSlashesRequest;
-
-  getEndingHeight(): number;
-  setEndingHeight(value: number): QueryValidatorSlashesRequest;
-
-  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageRequest | undefined;
-  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageRequest): QueryValidatorSlashesRequest;
-  hasPagination(): boolean;
-  clearPagination(): QueryValidatorSlashesRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryValidatorSlashesRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryValidatorSlashesRequest): QueryValidatorSlashesRequest.AsObject;
-  static serializeBinaryToWriter(message: QueryValidatorSlashesRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryValidatorSlashesRequest;
-  static deserializeBinaryFromReader(message: QueryValidatorSlashesRequest, reader: jspb.BinaryReader): QueryValidatorSlashesRequest;
-}
-
-export namespace QueryValidatorSlashesRequest {
-  export type AsObject = {
-    validatorAddress: string,
-    startingHeight: number,
-    endingHeight: number,
-    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageRequest.AsObject,
-  }
-}
-
-export class QueryValidatorSlashesResponse extends jspb.Message {
-  getSlashesList(): Array<sgn_distribution_v1_distribution_pb.ValidatorSlashEvent>;
-  setSlashesList(value: Array<sgn_distribution_v1_distribution_pb.ValidatorSlashEvent>): QueryValidatorSlashesResponse;
-  clearSlashesList(): QueryValidatorSlashesResponse;
-  addSlashes(value?: sgn_distribution_v1_distribution_pb.ValidatorSlashEvent, index?: number): sgn_distribution_v1_distribution_pb.ValidatorSlashEvent;
-
-  getPagination(): cosmos_base_query_v1beta1_pagination_pb.PageResponse | undefined;
-  setPagination(value?: cosmos_base_query_v1beta1_pagination_pb.PageResponse): QueryValidatorSlashesResponse;
-  hasPagination(): boolean;
-  clearPagination(): QueryValidatorSlashesResponse;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): QueryValidatorSlashesResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: QueryValidatorSlashesResponse): QueryValidatorSlashesResponse.AsObject;
-  static serializeBinaryToWriter(message: QueryValidatorSlashesResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): QueryValidatorSlashesResponse;
-  static deserializeBinaryFromReader(message: QueryValidatorSlashesResponse, reader: jspb.BinaryReader): QueryValidatorSlashesResponse;
-}
-
-export namespace QueryValidatorSlashesResponse {
-  export type AsObject = {
-    slashesList: Array<sgn_distribution_v1_distribution_pb.ValidatorSlashEvent.AsObject>,
-    pagination?: cosmos_base_query_v1beta1_pagination_pb.PageResponse.AsObject,
-  }
-}
-
 export class QueryDelegationRewardsRequest extends jspb.Message {
   getDelegatorAddress(): string;
   setDelegatorAddress(value: string): QueryDelegationRewardsRequest;
@@ -464,8 +406,8 @@ export namespace QueryCBridgeFeeShareInfoRequest {
 }
 
 export class QueryCBridgeFeeShareInfoResponse extends jspb.Message {
-  getFeeShareInfo(): sgn_distribution_v1_distribution_pb.CBridgeFeeShareInfo | undefined;
-  setFeeShareInfo(value?: sgn_distribution_v1_distribution_pb.CBridgeFeeShareInfo): QueryCBridgeFeeShareInfoResponse;
+  getFeeShareInfo(): sgn_distribution_v1_distribution_pb.ClaimableFeesInfo | undefined;
+  setFeeShareInfo(value?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo): QueryCBridgeFeeShareInfoResponse;
   hasFeeShareInfo(): boolean;
   clearFeeShareInfo(): QueryCBridgeFeeShareInfoResponse;
 
@@ -479,7 +421,83 @@ export class QueryCBridgeFeeShareInfoResponse extends jspb.Message {
 
 export namespace QueryCBridgeFeeShareInfoResponse {
   export type AsObject = {
-    feeShareInfo?: sgn_distribution_v1_distribution_pb.CBridgeFeeShareInfo.AsObject,
+    feeShareInfo?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo.AsObject,
+  }
+}
+
+export class QueryPegBridgeFeesInfoRequest extends jspb.Message {
+  getDelegatorAddress(): string;
+  setDelegatorAddress(value: string): QueryPegBridgeFeesInfoRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryPegBridgeFeesInfoRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryPegBridgeFeesInfoRequest): QueryPegBridgeFeesInfoRequest.AsObject;
+  static serializeBinaryToWriter(message: QueryPegBridgeFeesInfoRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryPegBridgeFeesInfoRequest;
+  static deserializeBinaryFromReader(message: QueryPegBridgeFeesInfoRequest, reader: jspb.BinaryReader): QueryPegBridgeFeesInfoRequest;
+}
+
+export namespace QueryPegBridgeFeesInfoRequest {
+  export type AsObject = {
+    delegatorAddress: string,
+  }
+}
+
+export class QueryPegBridgeFeesInfoResponse extends jspb.Message {
+  getFeesInfo(): sgn_distribution_v1_distribution_pb.ClaimableFeesInfo | undefined;
+  setFeesInfo(value?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo): QueryPegBridgeFeesInfoResponse;
+  hasFeesInfo(): boolean;
+  clearFeesInfo(): QueryPegBridgeFeesInfoResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryPegBridgeFeesInfoResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryPegBridgeFeesInfoResponse): QueryPegBridgeFeesInfoResponse.AsObject;
+  static serializeBinaryToWriter(message: QueryPegBridgeFeesInfoResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryPegBridgeFeesInfoResponse;
+  static deserializeBinaryFromReader(message: QueryPegBridgeFeesInfoResponse, reader: jspb.BinaryReader): QueryPegBridgeFeesInfoResponse;
+}
+
+export namespace QueryPegBridgeFeesInfoResponse {
+  export type AsObject = {
+    feesInfo?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo.AsObject,
+  }
+}
+
+export class QueryMessageFeesInfoRequest extends jspb.Message {
+  getDelegatorAddress(): string;
+  setDelegatorAddress(value: string): QueryMessageFeesInfoRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryMessageFeesInfoRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryMessageFeesInfoRequest): QueryMessageFeesInfoRequest.AsObject;
+  static serializeBinaryToWriter(message: QueryMessageFeesInfoRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryMessageFeesInfoRequest;
+  static deserializeBinaryFromReader(message: QueryMessageFeesInfoRequest, reader: jspb.BinaryReader): QueryMessageFeesInfoRequest;
+}
+
+export namespace QueryMessageFeesInfoRequest {
+  export type AsObject = {
+    delegatorAddress: string,
+  }
+}
+
+export class QueryMessageFeesInfoResponse extends jspb.Message {
+  getFeesInfo(): sgn_distribution_v1_distribution_pb.ClaimableFeesInfo | undefined;
+  setFeesInfo(value?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo): QueryMessageFeesInfoResponse;
+  hasFeesInfo(): boolean;
+  clearFeesInfo(): QueryMessageFeesInfoResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryMessageFeesInfoResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryMessageFeesInfoResponse): QueryMessageFeesInfoResponse.AsObject;
+  static serializeBinaryToWriter(message: QueryMessageFeesInfoResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryMessageFeesInfoResponse;
+  static deserializeBinaryFromReader(message: QueryMessageFeesInfoResponse, reader: jspb.BinaryReader): QueryMessageFeesInfoResponse;
+}
+
+export namespace QueryMessageFeesInfoResponse {
+  export type AsObject = {
+    feesInfo?: sgn_distribution_v1_distribution_pb.ClaimableFeesInfo.AsObject,
   }
 }
 

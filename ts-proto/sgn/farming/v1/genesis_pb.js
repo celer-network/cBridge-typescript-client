@@ -2,20 +2,31 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
+/* eslint-disable */
+// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
 var sgn_farming_v1_farming_pb = require('../../../sgn/farming/v1/farming_pb.js');
 goog.object.extend(proto, sgn_farming_v1_farming_pb);
+var sgn_common_v1_common_pb = require('../../../sgn/common/v1/common_pb.js');
+goog.object.extend(proto, sgn_common_v1_common_pb);
 goog.exportSymbol('proto.sgn.farming.v1.GenesisState', null, global);
 goog.exportSymbol('proto.sgn.farming.v1.PoolCurrentRewardsRecord', null, global);
 goog.exportSymbol('proto.sgn.farming.v1.PoolHistoricalRewardsRecord', null, global);
@@ -713,7 +724,7 @@ proto.sgn.farming.v1.StakeInfoRecord.prototype.hasStakeInfo = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.sgn.farming.v1.GenesisState.repeatedFields_ = [2,3,4,5];
+proto.sgn.farming.v1.GenesisState.repeatedFields_ = [2,3,4,5,6];
 
 
 
@@ -754,7 +765,9 @@ proto.sgn.farming.v1.GenesisState.toObject = function(includeInstance, msg) {
     poolHistoricalRewardsList: jspb.Message.toObjectList(msg.getPoolHistoricalRewardsList(),
     proto.sgn.farming.v1.PoolHistoricalRewardsRecord.toObject, includeInstance),
     poolCurrentRewardsList: jspb.Message.toObjectList(msg.getPoolCurrentRewardsList(),
-    proto.sgn.farming.v1.PoolCurrentRewardsRecord.toObject, includeInstance)
+    proto.sgn.farming.v1.PoolCurrentRewardsRecord.toObject, includeInstance),
+    rewardContractsList: jspb.Message.toObjectList(msg.getRewardContractsList(),
+    sgn_common_v1_common_pb.ContractInfo.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -815,6 +828,11 @@ proto.sgn.farming.v1.GenesisState.deserializeBinaryFromReader = function(msg, re
       var value = new proto.sgn.farming.v1.PoolCurrentRewardsRecord;
       reader.readMessage(value,proto.sgn.farming.v1.PoolCurrentRewardsRecord.deserializeBinaryFromReader);
       msg.addPoolCurrentRewards(value);
+      break;
+    case 6:
+      var value = new sgn_common_v1_common_pb.ContractInfo;
+      reader.readMessage(value,sgn_common_v1_common_pb.ContractInfo.deserializeBinaryFromReader);
+      msg.addRewardContracts(value);
       break;
     default:
       reader.skipField();
@@ -883,6 +901,14 @@ proto.sgn.farming.v1.GenesisState.serializeBinaryToWriter = function(message, wr
       5,
       f,
       proto.sgn.farming.v1.PoolCurrentRewardsRecord.serializeBinaryToWriter
+    );
+  }
+  f = message.getRewardContractsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      6,
+      f,
+      sgn_common_v1_common_pb.ContractInfo.serializeBinaryToWriter
     );
   }
 };
@@ -1074,6 +1100,44 @@ proto.sgn.farming.v1.GenesisState.prototype.addPoolCurrentRewards = function(opt
  */
 proto.sgn.farming.v1.GenesisState.prototype.clearPoolCurrentRewardsList = function() {
   return this.setPoolCurrentRewardsList([]);
+};
+
+
+/**
+ * repeated sgn.common.v1.ContractInfo reward_contracts = 6;
+ * @return {!Array<!proto.sgn.common.v1.ContractInfo>}
+ */
+proto.sgn.farming.v1.GenesisState.prototype.getRewardContractsList = function() {
+  return /** @type{!Array<!proto.sgn.common.v1.ContractInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, sgn_common_v1_common_pb.ContractInfo, 6));
+};
+
+
+/**
+ * @param {!Array<!proto.sgn.common.v1.ContractInfo>} value
+ * @return {!proto.sgn.farming.v1.GenesisState} returns this
+*/
+proto.sgn.farming.v1.GenesisState.prototype.setRewardContractsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 6, value);
+};
+
+
+/**
+ * @param {!proto.sgn.common.v1.ContractInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sgn.common.v1.ContractInfo}
+ */
+proto.sgn.farming.v1.GenesisState.prototype.addRewardContracts = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.sgn.common.v1.ContractInfo, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sgn.farming.v1.GenesisState} returns this
+ */
+proto.sgn.farming.v1.GenesisState.prototype.clearRewardContractsList = function() {
+  return this.setRewardContractsList([]);
 };
 
 

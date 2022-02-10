@@ -250,6 +250,92 @@ export class QueryClient {
     this.methodInfoToken);
   }
 
+  methodInfoRewardContracts = new grpcWeb.MethodDescriptor(
+    '/sgn.farming.v1.Query/RewardContracts',
+    grpcWeb.MethodType.UNARY,
+    sgn_farming_v1_query_pb.QueryRewardContractsRequest,
+    sgn_farming_v1_query_pb.QueryRewardContractsResponse,
+    (request: sgn_farming_v1_query_pb.QueryRewardContractsRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_farming_v1_query_pb.QueryRewardContractsResponse.deserializeBinary
+  );
+
+  rewardContracts(
+    request: sgn_farming_v1_query_pb.QueryRewardContractsRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_farming_v1_query_pb.QueryRewardContractsResponse>;
+
+  rewardContracts(
+    request: sgn_farming_v1_query_pb.QueryRewardContractsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_farming_v1_query_pb.QueryRewardContractsResponse) => void): grpcWeb.ClientReadableStream<sgn_farming_v1_query_pb.QueryRewardContractsResponse>;
+
+  rewardContracts(
+    request: sgn_farming_v1_query_pb.QueryRewardContractsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_farming_v1_query_pb.QueryRewardContractsResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.farming.v1.Query/RewardContracts',
+        request,
+        metadata || {},
+        this.methodInfoRewardContracts,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.farming.v1.Query/RewardContracts',
+    request,
+    metadata || {},
+    this.methodInfoRewardContracts);
+  }
+
+  methodInfoRewardContract = new grpcWeb.MethodDescriptor(
+    '/sgn.farming.v1.Query/RewardContract',
+    grpcWeb.MethodType.UNARY,
+    sgn_farming_v1_query_pb.QueryRewardContractRequest,
+    sgn_farming_v1_query_pb.QueryRewardContractResponse,
+    (request: sgn_farming_v1_query_pb.QueryRewardContractRequest) => {
+      return request.serializeBinary();
+    },
+    sgn_farming_v1_query_pb.QueryRewardContractResponse.deserializeBinary
+  );
+
+  rewardContract(
+    request: sgn_farming_v1_query_pb.QueryRewardContractRequest,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_farming_v1_query_pb.QueryRewardContractResponse>;
+
+  rewardContract(
+    request: sgn_farming_v1_query_pb.QueryRewardContractRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_farming_v1_query_pb.QueryRewardContractResponse) => void): grpcWeb.ClientReadableStream<sgn_farming_v1_query_pb.QueryRewardContractResponse>;
+
+  rewardContract(
+    request: sgn_farming_v1_query_pb.QueryRewardContractRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_farming_v1_query_pb.QueryRewardContractResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.farming.v1.Query/RewardContract',
+        request,
+        metadata || {},
+        this.methodInfoRewardContract,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.farming.v1.Query/RewardContract',
+    request,
+    metadata || {},
+    this.methodInfoRewardContract);
+  }
+
   methodInfoEarnings = new grpcWeb.MethodDescriptor(
     '/sgn.farming.v1.Query/Earnings',
     grpcWeb.MethodType.UNARY,

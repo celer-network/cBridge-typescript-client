@@ -27,49 +27,19 @@ export namespace Params {
   }
 }
 
-export class ERC20Token extends jspb.Message {
-  getChainId(): number;
-  setChainId(value: number): ERC20Token;
-
-  getSymbol(): string;
-  setSymbol(value: string): ERC20Token;
-
-  getAddress(): string;
-  setAddress(value: string): ERC20Token;
-
-  getDecimals(): number;
-  setDecimals(value: number): ERC20Token;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ERC20Token.AsObject;
-  static toObject(includeInstance: boolean, msg: ERC20Token): ERC20Token.AsObject;
-  static serializeBinaryToWriter(message: ERC20Token, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ERC20Token;
-  static deserializeBinaryFromReader(message: ERC20Token, reader: jspb.BinaryReader): ERC20Token;
-}
-
-export namespace ERC20Token {
-  export type AsObject = {
-    chainId: number,
-    symbol: string,
-    address: string,
-    decimals: number,
-  }
-}
-
 export class FarmingPool extends jspb.Message {
   getName(): string;
   setName(value: string): FarmingPool;
 
-  getStakeToken(): ERC20Token | undefined;
-  setStakeToken(value?: ERC20Token): FarmingPool;
+  getStakeToken(): sgn_common_v1_common_pb.ERC20Token | undefined;
+  setStakeToken(value?: sgn_common_v1_common_pb.ERC20Token): FarmingPool;
   hasStakeToken(): boolean;
   clearStakeToken(): FarmingPool;
 
-  getRewardTokensList(): Array<ERC20Token>;
-  setRewardTokensList(value: Array<ERC20Token>): FarmingPool;
+  getRewardTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setRewardTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): FarmingPool;
   clearRewardTokensList(): FarmingPool;
-  addRewardTokens(value?: ERC20Token, index?: number): ERC20Token;
+  addRewardTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   getTotalStakedAmount(): cosmos_base_v1beta1_coin_pb.DecCoin | undefined;
   setTotalStakedAmount(value?: cosmos_base_v1beta1_coin_pb.DecCoin): FarmingPool;
@@ -97,8 +67,8 @@ export class FarmingPool extends jspb.Message {
 export namespace FarmingPool {
   export type AsObject = {
     name: string,
-    stakeToken?: ERC20Token.AsObject,
-    rewardTokensList: Array<ERC20Token.AsObject>,
+    stakeToken?: sgn_common_v1_common_pb.ERC20Token.AsObject,
+    rewardTokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
     totalStakedAmount?: cosmos_base_v1beta1_coin_pb.DecCoin.AsObject,
     rewardTokenInfosList: Array<RewardTokenInfo.AsObject>,
     totalAccumulatedRewardsList: Array<cosmos_base_v1beta1_coin_pb.DecCoin.AsObject>,
@@ -395,6 +365,38 @@ export namespace RewardAdjustmentInput {
   }
 }
 
+export class FarmingRewardsOnChain extends jspb.Message {
+  getRecipient(): Uint8Array | string;
+  getRecipient_asU8(): Uint8Array;
+  getRecipient_asB64(): string;
+  setRecipient(value: Uint8Array | string): FarmingRewardsOnChain;
+
+  getTokenAddressesList(): Array<Uint8Array | string>;
+  setTokenAddressesList(value: Array<Uint8Array | string>): FarmingRewardsOnChain;
+  clearTokenAddressesList(): FarmingRewardsOnChain;
+  addTokenAddresses(value: Uint8Array | string, index?: number): FarmingRewardsOnChain;
+
+  getCumulativeRewardAmountsList(): Array<Uint8Array | string>;
+  setCumulativeRewardAmountsList(value: Array<Uint8Array | string>): FarmingRewardsOnChain;
+  clearCumulativeRewardAmountsList(): FarmingRewardsOnChain;
+  addCumulativeRewardAmounts(value: Uint8Array | string, index?: number): FarmingRewardsOnChain;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): FarmingRewardsOnChain.AsObject;
+  static toObject(includeInstance: boolean, msg: FarmingRewardsOnChain): FarmingRewardsOnChain.AsObject;
+  static serializeBinaryToWriter(message: FarmingRewardsOnChain, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): FarmingRewardsOnChain;
+  static deserializeBinaryFromReader(message: FarmingRewardsOnChain, reader: jspb.BinaryReader): FarmingRewardsOnChain;
+}
+
+export namespace FarmingRewardsOnChain {
+  export type AsObject = {
+    recipient: Uint8Array | string,
+    tokenAddressesList: Array<Uint8Array | string>,
+    cumulativeRewardAmountsList: Array<Uint8Array | string>,
+  }
+}
+
 export class AddPoolProposal extends jspb.Message {
   getTitle(): string;
   setTitle(value: string): AddPoolProposal;
@@ -405,15 +407,15 @@ export class AddPoolProposal extends jspb.Message {
   getPoolName(): string;
   setPoolName(value: string): AddPoolProposal;
 
-  getStakeToken(): ERC20Token | undefined;
-  setStakeToken(value?: ERC20Token): AddPoolProposal;
+  getStakeToken(): sgn_common_v1_common_pb.ERC20Token | undefined;
+  setStakeToken(value?: sgn_common_v1_common_pb.ERC20Token): AddPoolProposal;
   hasStakeToken(): boolean;
   clearStakeToken(): AddPoolProposal;
 
-  getRewardTokensList(): Array<ERC20Token>;
-  setRewardTokensList(value: Array<ERC20Token>): AddPoolProposal;
+  getRewardTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setRewardTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): AddPoolProposal;
   clearRewardTokensList(): AddPoolProposal;
-  addRewardTokens(value?: ERC20Token, index?: number): ERC20Token;
+  addRewardTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   getInitialRewardInputsList(): Array<RewardAdjustmentInput>;
   setInitialRewardInputsList(value: Array<RewardAdjustmentInput>): AddPoolProposal;
@@ -433,8 +435,72 @@ export namespace AddPoolProposal {
     title: string,
     description: string,
     poolName: string,
-    stakeToken?: ERC20Token.AsObject,
-    rewardTokensList: Array<ERC20Token.AsObject>,
+    stakeToken?: sgn_common_v1_common_pb.ERC20Token.AsObject,
+    rewardTokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
+    initialRewardInputsList: Array<RewardAdjustmentInput.AsObject>,
+  }
+}
+
+export class BatchAddPoolProposal extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): BatchAddPoolProposal;
+
+  getDescription(): string;
+  setDescription(value: string): BatchAddPoolProposal;
+
+  getAddPoolInfosList(): Array<AddPoolInfo>;
+  setAddPoolInfosList(value: Array<AddPoolInfo>): BatchAddPoolProposal;
+  clearAddPoolInfosList(): BatchAddPoolProposal;
+  addAddPoolInfos(value?: AddPoolInfo, index?: number): AddPoolInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BatchAddPoolProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: BatchAddPoolProposal): BatchAddPoolProposal.AsObject;
+  static serializeBinaryToWriter(message: BatchAddPoolProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BatchAddPoolProposal;
+  static deserializeBinaryFromReader(message: BatchAddPoolProposal, reader: jspb.BinaryReader): BatchAddPoolProposal;
+}
+
+export namespace BatchAddPoolProposal {
+  export type AsObject = {
+    title: string,
+    description: string,
+    addPoolInfosList: Array<AddPoolInfo.AsObject>,
+  }
+}
+
+export class AddPoolInfo extends jspb.Message {
+  getPoolName(): string;
+  setPoolName(value: string): AddPoolInfo;
+
+  getStakeToken(): sgn_common_v1_common_pb.ERC20Token | undefined;
+  setStakeToken(value?: sgn_common_v1_common_pb.ERC20Token): AddPoolInfo;
+  hasStakeToken(): boolean;
+  clearStakeToken(): AddPoolInfo;
+
+  getRewardTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setRewardTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): AddPoolInfo;
+  clearRewardTokensList(): AddPoolInfo;
+  addRewardTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
+
+  getInitialRewardInputsList(): Array<RewardAdjustmentInput>;
+  setInitialRewardInputsList(value: Array<RewardAdjustmentInput>): AddPoolInfo;
+  clearInitialRewardInputsList(): AddPoolInfo;
+  addInitialRewardInputs(value?: RewardAdjustmentInput, index?: number): RewardAdjustmentInput;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AddPoolInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: AddPoolInfo): AddPoolInfo.AsObject;
+  static serializeBinaryToWriter(message: AddPoolInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AddPoolInfo;
+  static deserializeBinaryFromReader(message: AddPoolInfo, reader: jspb.BinaryReader): AddPoolInfo;
+}
+
+export namespace AddPoolInfo {
+  export type AsObject = {
+    poolName: string,
+    stakeToken?: sgn_common_v1_common_pb.ERC20Token.AsObject,
+    rewardTokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
     initialRewardInputsList: Array<RewardAdjustmentInput.AsObject>,
   }
 }
@@ -449,15 +515,15 @@ export class AddPoolProposalWithDeposit extends jspb.Message {
   getPoolName(): string;
   setPoolName(value: string): AddPoolProposalWithDeposit;
 
-  getStakeToken(): ERC20Token | undefined;
-  setStakeToken(value?: ERC20Token): AddPoolProposalWithDeposit;
+  getStakeToken(): sgn_common_v1_common_pb.ERC20Token | undefined;
+  setStakeToken(value?: sgn_common_v1_common_pb.ERC20Token): AddPoolProposalWithDeposit;
   hasStakeToken(): boolean;
   clearStakeToken(): AddPoolProposalWithDeposit;
 
-  getRewardTokensList(): Array<ERC20Token>;
-  setRewardTokensList(value: Array<ERC20Token>): AddPoolProposalWithDeposit;
+  getRewardTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setRewardTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): AddPoolProposalWithDeposit;
   clearRewardTokensList(): AddPoolProposalWithDeposit;
-  addRewardTokens(value?: ERC20Token, index?: number): ERC20Token;
+  addRewardTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   getInitialRewardInputsList(): Array<RewardAdjustmentInput>;
   setInitialRewardInputsList(value: Array<RewardAdjustmentInput>): AddPoolProposalWithDeposit;
@@ -480,9 +546,41 @@ export namespace AddPoolProposalWithDeposit {
     title: string,
     description: string,
     poolName: string,
-    stakeToken?: ERC20Token.AsObject,
-    rewardTokensList: Array<ERC20Token.AsObject>,
+    stakeToken?: sgn_common_v1_common_pb.ERC20Token.AsObject,
+    rewardTokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
     initialRewardInputsList: Array<RewardAdjustmentInput.AsObject>,
+    deposit: string,
+  }
+}
+
+export class BatchAddPoolProposalWithDeposit extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): BatchAddPoolProposalWithDeposit;
+
+  getDescription(): string;
+  setDescription(value: string): BatchAddPoolProposalWithDeposit;
+
+  getAddPoolInfosList(): Array<AddPoolInfo>;
+  setAddPoolInfosList(value: Array<AddPoolInfo>): BatchAddPoolProposalWithDeposit;
+  clearAddPoolInfosList(): BatchAddPoolProposalWithDeposit;
+  addAddPoolInfos(value?: AddPoolInfo, index?: number): AddPoolInfo;
+
+  getDeposit(): string;
+  setDeposit(value: string): BatchAddPoolProposalWithDeposit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BatchAddPoolProposalWithDeposit.AsObject;
+  static toObject(includeInstance: boolean, msg: BatchAddPoolProposalWithDeposit): BatchAddPoolProposalWithDeposit.AsObject;
+  static serializeBinaryToWriter(message: BatchAddPoolProposalWithDeposit, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BatchAddPoolProposalWithDeposit;
+  static deserializeBinaryFromReader(message: BatchAddPoolProposalWithDeposit, reader: jspb.BinaryReader): BatchAddPoolProposalWithDeposit;
+}
+
+export namespace BatchAddPoolProposalWithDeposit {
+  export type AsObject = {
+    title: string,
+    description: string,
+    addPoolInfosList: Array<AddPoolInfo.AsObject>,
     deposit: string,
   }
 }
@@ -514,6 +612,58 @@ export namespace AdjustRewardProposal {
   export type AsObject = {
     title: string,
     description: string,
+    poolName: string,
+    rewardAdjustmentInputsList: Array<RewardAdjustmentInput.AsObject>,
+  }
+}
+
+export class BatchAdjustRewardProposal extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): BatchAdjustRewardProposal;
+
+  getDescription(): string;
+  setDescription(value: string): BatchAdjustRewardProposal;
+
+  getAdjustRewardInfosList(): Array<AdjustRewardInfo>;
+  setAdjustRewardInfosList(value: Array<AdjustRewardInfo>): BatchAdjustRewardProposal;
+  clearAdjustRewardInfosList(): BatchAdjustRewardProposal;
+  addAdjustRewardInfos(value?: AdjustRewardInfo, index?: number): AdjustRewardInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BatchAdjustRewardProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: BatchAdjustRewardProposal): BatchAdjustRewardProposal.AsObject;
+  static serializeBinaryToWriter(message: BatchAdjustRewardProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BatchAdjustRewardProposal;
+  static deserializeBinaryFromReader(message: BatchAdjustRewardProposal, reader: jspb.BinaryReader): BatchAdjustRewardProposal;
+}
+
+export namespace BatchAdjustRewardProposal {
+  export type AsObject = {
+    title: string,
+    description: string,
+    adjustRewardInfosList: Array<AdjustRewardInfo.AsObject>,
+  }
+}
+
+export class AdjustRewardInfo extends jspb.Message {
+  getPoolName(): string;
+  setPoolName(value: string): AdjustRewardInfo;
+
+  getRewardAdjustmentInputsList(): Array<RewardAdjustmentInput>;
+  setRewardAdjustmentInputsList(value: Array<RewardAdjustmentInput>): AdjustRewardInfo;
+  clearRewardAdjustmentInputsList(): AdjustRewardInfo;
+  addRewardAdjustmentInputs(value?: RewardAdjustmentInput, index?: number): RewardAdjustmentInput;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AdjustRewardInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: AdjustRewardInfo): AdjustRewardInfo.AsObject;
+  static serializeBinaryToWriter(message: AdjustRewardInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AdjustRewardInfo;
+  static deserializeBinaryFromReader(message: AdjustRewardInfo, reader: jspb.BinaryReader): AdjustRewardInfo;
+}
+
+export namespace AdjustRewardInfo {
+  export type AsObject = {
     poolName: string,
     rewardAdjustmentInputsList: Array<RewardAdjustmentInput.AsObject>,
   }
@@ -551,6 +701,38 @@ export namespace AdjustRewardProposalWithDeposit {
     description: string,
     poolName: string,
     rewardAdjustmentInputsList: Array<RewardAdjustmentInput.AsObject>,
+    deposit: string,
+  }
+}
+
+export class BatchAdjustRewardProposalWithDeposit extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): BatchAdjustRewardProposalWithDeposit;
+
+  getDescription(): string;
+  setDescription(value: string): BatchAdjustRewardProposalWithDeposit;
+
+  getAdjustRewardInfosList(): Array<AdjustRewardInfo>;
+  setAdjustRewardInfosList(value: Array<AdjustRewardInfo>): BatchAdjustRewardProposalWithDeposit;
+  clearAdjustRewardInfosList(): BatchAdjustRewardProposalWithDeposit;
+  addAdjustRewardInfos(value?: AdjustRewardInfo, index?: number): AdjustRewardInfo;
+
+  getDeposit(): string;
+  setDeposit(value: string): BatchAdjustRewardProposalWithDeposit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BatchAdjustRewardProposalWithDeposit.AsObject;
+  static toObject(includeInstance: boolean, msg: BatchAdjustRewardProposalWithDeposit): BatchAdjustRewardProposalWithDeposit.AsObject;
+  static serializeBinaryToWriter(message: BatchAdjustRewardProposalWithDeposit, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BatchAdjustRewardProposalWithDeposit;
+  static deserializeBinaryFromReader(message: BatchAdjustRewardProposalWithDeposit, reader: jspb.BinaryReader): BatchAdjustRewardProposalWithDeposit;
+}
+
+export namespace BatchAdjustRewardProposalWithDeposit {
+  export type AsObject = {
+    title: string,
+    description: string,
+    adjustRewardInfosList: Array<AdjustRewardInfo.AsObject>,
     deposit: string,
   }
 }
@@ -618,10 +800,10 @@ export class AddTokensProposal extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): AddTokensProposal;
 
-  getTokensList(): Array<ERC20Token>;
-  setTokensList(value: Array<ERC20Token>): AddTokensProposal;
+  getTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): AddTokensProposal;
   clearTokensList(): AddTokensProposal;
-  addTokens(value?: ERC20Token, index?: number): ERC20Token;
+  addTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AddTokensProposal.AsObject;
@@ -635,7 +817,7 @@ export namespace AddTokensProposal {
   export type AsObject = {
     title: string,
     description: string,
-    tokensList: Array<ERC20Token.AsObject>,
+    tokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
   }
 }
 
@@ -646,10 +828,10 @@ export class AddTokensProposalWithDeposit extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): AddTokensProposalWithDeposit;
 
-  getTokensList(): Array<ERC20Token>;
-  setTokensList(value: Array<ERC20Token>): AddTokensProposalWithDeposit;
+  getTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): AddTokensProposalWithDeposit;
   clearTokensList(): AddTokensProposalWithDeposit;
-  addTokens(value?: ERC20Token, index?: number): ERC20Token;
+  addTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   getDeposit(): string;
   setDeposit(value: string): AddTokensProposalWithDeposit;
@@ -666,7 +848,67 @@ export namespace AddTokensProposalWithDeposit {
   export type AsObject = {
     title: string,
     description: string,
-    tokensList: Array<ERC20Token.AsObject>,
+    tokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
+    deposit: string,
+  }
+}
+
+export class SetRewardContractsProposal extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): SetRewardContractsProposal;
+
+  getDescription(): string;
+  setDescription(value: string): SetRewardContractsProposal;
+
+  getRewardContractsList(): Array<sgn_common_v1_common_pb.ContractInfo>;
+  setRewardContractsList(value: Array<sgn_common_v1_common_pb.ContractInfo>): SetRewardContractsProposal;
+  clearRewardContractsList(): SetRewardContractsProposal;
+  addRewardContracts(value?: sgn_common_v1_common_pb.ContractInfo, index?: number): sgn_common_v1_common_pb.ContractInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetRewardContractsProposal.AsObject;
+  static toObject(includeInstance: boolean, msg: SetRewardContractsProposal): SetRewardContractsProposal.AsObject;
+  static serializeBinaryToWriter(message: SetRewardContractsProposal, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetRewardContractsProposal;
+  static deserializeBinaryFromReader(message: SetRewardContractsProposal, reader: jspb.BinaryReader): SetRewardContractsProposal;
+}
+
+export namespace SetRewardContractsProposal {
+  export type AsObject = {
+    title: string,
+    description: string,
+    rewardContractsList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
+  }
+}
+
+export class SetRewardContractsProposalWithDeposit extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): SetRewardContractsProposalWithDeposit;
+
+  getDescription(): string;
+  setDescription(value: string): SetRewardContractsProposalWithDeposit;
+
+  getRewardContractsList(): Array<sgn_common_v1_common_pb.ContractInfo>;
+  setRewardContractsList(value: Array<sgn_common_v1_common_pb.ContractInfo>): SetRewardContractsProposalWithDeposit;
+  clearRewardContractsList(): SetRewardContractsProposalWithDeposit;
+  addRewardContracts(value?: sgn_common_v1_common_pb.ContractInfo, index?: number): sgn_common_v1_common_pb.ContractInfo;
+
+  getDeposit(): string;
+  setDeposit(value: string): SetRewardContractsProposalWithDeposit;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetRewardContractsProposalWithDeposit.AsObject;
+  static toObject(includeInstance: boolean, msg: SetRewardContractsProposalWithDeposit): SetRewardContractsProposalWithDeposit.AsObject;
+  static serializeBinaryToWriter(message: SetRewardContractsProposalWithDeposit, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetRewardContractsProposalWithDeposit;
+  static deserializeBinaryFromReader(message: SetRewardContractsProposalWithDeposit, reader: jspb.BinaryReader): SetRewardContractsProposalWithDeposit;
+}
+
+export namespace SetRewardContractsProposalWithDeposit {
+  export type AsObject = {
+    title: string,
+    description: string,
+    rewardContractsList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
     deposit: string,
   }
 }

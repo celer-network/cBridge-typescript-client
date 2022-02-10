@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
 import * as sgn_farming_v1_farming_pb from '../../../sgn/farming/v1/farming_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
 
 
 export class PoolHistoricalRewardsRecord extends jspb.Message {
@@ -110,6 +111,11 @@ export class GenesisState extends jspb.Message {
   clearPoolCurrentRewardsList(): GenesisState;
   addPoolCurrentRewards(value?: PoolCurrentRewardsRecord, index?: number): PoolCurrentRewardsRecord;
 
+  getRewardContractsList(): Array<sgn_common_v1_common_pb.ContractInfo>;
+  setRewardContractsList(value: Array<sgn_common_v1_common_pb.ContractInfo>): GenesisState;
+  clearRewardContractsList(): GenesisState;
+  addRewardContracts(value?: sgn_common_v1_common_pb.ContractInfo, index?: number): sgn_common_v1_common_pb.ContractInfo;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
   static toObject(includeInstance: boolean, msg: GenesisState): GenesisState.AsObject;
@@ -125,6 +131,7 @@ export namespace GenesisState {
     stakeInfosList: Array<sgn_farming_v1_farming_pb.StakeInfo.AsObject>,
     poolHistoricalRewardsList: Array<PoolHistoricalRewardsRecord.AsObject>,
     poolCurrentRewardsList: Array<PoolCurrentRewardsRecord.AsObject>,
+    rewardContractsList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
   }
 }
 

@@ -2,15 +2,24 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
+/* eslint-disable */
+// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
 var gogoproto_gogo_pb = require('../../../gogoproto/gogo_pb.js');
 goog.object.extend(proto, gogoproto_gogo_pb);
@@ -1577,8 +1586,7 @@ proto.sgn.staking.v1.Params.prototype.toObject = function(opt_includeInstance) {
  */
 proto.sgn.staking.v1.Params.toObject = function(includeInstance, msg) {
   var f, obj = {
-    syncerDuration: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    epochLength: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    syncerDuration: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -1619,10 +1627,6 @@ proto.sgn.staking.v1.Params.deserializeBinaryFromReader = function(msg, reader) 
       var value = /** @type {number} */ (reader.readUint64());
       msg.setSyncerDuration(value);
       break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setEpochLength(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1659,13 +1663,6 @@ proto.sgn.staking.v1.Params.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getEpochLength();
-  if (f !== 0) {
-    writer.writeUint64(
-      2,
-      f
-    );
-  }
 };
 
 
@@ -1684,24 +1681,6 @@ proto.sgn.staking.v1.Params.prototype.getSyncerDuration = function() {
  */
 proto.sgn.staking.v1.Params.prototype.setSyncerDuration = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-/**
- * optional uint64 epoch_length = 2;
- * @return {number}
- */
-proto.sgn.staking.v1.Params.prototype.getEpochLength = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.sgn.staking.v1.Params} returns this
- */
-proto.sgn.staking.v1.Params.prototype.setEpochLength = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 

@@ -2,8 +2,8 @@ import * as jspb from 'google-protobuf'
 
 import * as cosmos_proto_cosmos_pb from '../../../cosmos_proto/cosmos_pb';
 import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
 
 
 export class Params extends jspb.Message {
@@ -54,6 +54,22 @@ export class CbrConfig extends jspb.Message {
   clearChainPairsList(): CbrConfig;
   addChainPairs(value?: ChainPair, index?: number): ChainPair;
 
+  getCbrContractsList(): Array<sgn_common_v1_common_pb.ContractInfo>;
+  setCbrContractsList(value: Array<sgn_common_v1_common_pb.ContractInfo>): CbrConfig;
+  clearCbrContractsList(): CbrConfig;
+  addCbrContracts(value?: sgn_common_v1_common_pb.ContractInfo, index?: number): sgn_common_v1_common_pb.ContractInfo;
+
+  getOverrideList(): Array<PerChainPairAssetOverride>;
+  setOverrideList(value: Array<PerChainPairAssetOverride>): CbrConfig;
+  clearOverrideList(): CbrConfig;
+  addOverride(value?: PerChainPairAssetOverride, index?: number): PerChainPairAssetOverride;
+
+  getMaxGainPerc(): number;
+  setMaxGainPerc(value: number): CbrConfig;
+
+  getUpdateGasCost(): boolean;
+  setUpdateGasCost(value: boolean): CbrConfig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CbrConfig.AsObject;
   static toObject(includeInstance: boolean, msg: CbrConfig): CbrConfig.AsObject;
@@ -69,6 +85,10 @@ export namespace CbrConfig {
     relayGasCostList: Array<RelayGasCostParam.AsObject>,
     assetsList: Array<ChainAsset.AsObject>,
     chainPairsList: Array<ChainPair.AsObject>,
+    cbrContractsList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
+    overrideList: Array<PerChainPairAssetOverride.AsObject>,
+    maxGainPerc: number,
+    updateGasCost: boolean,
   }
 }
 
@@ -144,6 +164,9 @@ export class AssetPrice extends jspb.Message {
   getPrice(): number;
   setPrice(value: number): AssetPrice;
 
+  getExtraPower10(): number;
+  setExtraPower10(value: number): AssetPrice;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AssetPrice.AsObject;
   static toObject(includeInstance: boolean, msg: AssetPrice): AssetPrice.AsObject;
@@ -157,6 +180,7 @@ export namespace AssetPrice {
     symbol: string,
     chainIdsList: Array<number>,
     price: number,
+    extraPower10: number,
   }
 }
 
@@ -243,6 +267,9 @@ export class ChainPair extends jspb.Message {
   getConstA(): number;
   setConstA(value: number): ChainPair;
 
+  getNoCurve(): boolean;
+  setNoCurve(value: boolean): ChainPair;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ChainPair.AsObject;
   static toObject(includeInstance: boolean, msg: ChainPair): ChainPair.AsObject;
@@ -259,6 +286,31 @@ export namespace ChainPair {
     fee1to2: number,
     fee2to1: number,
     constA: number,
+    noCurve: boolean,
+  }
+}
+
+export class PerChainPairAssetOverride extends jspb.Message {
+  getSymbol(): string;
+  setSymbol(value: string): PerChainPairAssetOverride;
+
+  getChpair(): ChainPair | undefined;
+  setChpair(value?: ChainPair): PerChainPairAssetOverride;
+  hasChpair(): boolean;
+  clearChpair(): PerChainPairAssetOverride;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PerChainPairAssetOverride.AsObject;
+  static toObject(includeInstance: boolean, msg: PerChainPairAssetOverride): PerChainPairAssetOverride.AsObject;
+  static serializeBinaryToWriter(message: PerChainPairAssetOverride, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PerChainPairAssetOverride;
+  static deserializeBinaryFromReader(message: PerChainPairAssetOverride, reader: jspb.BinaryReader): PerChainPairAssetOverride;
+}
+
+export namespace PerChainPairAssetOverride {
+  export type AsObject = {
+    symbol: string,
+    chpair?: ChainPair.AsObject,
   }
 }
 
@@ -396,6 +448,11 @@ export class WithdrawOnchain extends jspb.Message {
   getAmount_asB64(): string;
   setAmount(value: Uint8Array | string): WithdrawOnchain;
 
+  getRefid(): Uint8Array | string;
+  getRefid_asU8(): Uint8Array;
+  getRefid_asB64(): string;
+  setRefid(value: Uint8Array | string): WithdrawOnchain;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WithdrawOnchain.AsObject;
   static toObject(includeInstance: boolean, msg: WithdrawOnchain): WithdrawOnchain.AsObject;
@@ -411,6 +468,7 @@ export namespace WithdrawOnchain {
     receiver: Uint8Array | string,
     token: Uint8Array | string,
     amount: Uint8Array | string,
+    refid: Uint8Array | string,
   }
 }
 
@@ -425,6 +483,19 @@ export class XferRelay extends jspb.Message {
   clearSortedSigsList(): XferRelay;
   addSortedSigs(value?: AddrSig, index?: number): AddrSig;
 
+  getLastReqTime(): number;
+  setLastReqTime(value: number): XferRelay;
+
+  getPercFee(): Uint8Array | string;
+  getPercFee_asU8(): Uint8Array;
+  getPercFee_asB64(): string;
+  setPercFee(value: Uint8Array | string): XferRelay;
+
+  getBaseFee(): Uint8Array | string;
+  getBaseFee_asU8(): Uint8Array;
+  getBaseFee_asB64(): string;
+  setBaseFee(value: Uint8Array | string): XferRelay;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): XferRelay.AsObject;
   static toObject(includeInstance: boolean, msg: XferRelay): XferRelay.AsObject;
@@ -437,6 +508,9 @@ export namespace XferRelay {
   export type AsObject = {
     relay: Uint8Array | string,
     sortedSigsList: Array<AddrSig.AsObject>,
+    lastReqTime: number,
+    percFee: Uint8Array | string,
+    baseFee: Uint8Array | string,
   }
 }
 
@@ -541,6 +615,11 @@ export class ChainSigners extends jspb.Message {
   clearSortedSignersList(): ChainSigners;
   addSortedSigners(value?: Signer, index?: number): Signer;
 
+  getSortedSigsList(): Array<AddrSig>;
+  setSortedSigsList(value: Array<AddrSig>): ChainSigners;
+  clearSortedSigsList(): ChainSigners;
+  addSortedSigs(value?: AddrSig, index?: number): AddrSig;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ChainSigners.AsObject;
   static toObject(includeInstance: boolean, msg: ChainSigners): ChainSigners.AsObject;
@@ -553,6 +632,7 @@ export namespace ChainSigners {
   export type AsObject = {
     chainId: number,
     sortedSignersList: Array<Signer.AsObject>,
+    sortedSigsList: Array<AddrSig.AsObject>,
   }
 }
 
@@ -567,15 +647,11 @@ export class LatestSigners extends jspb.Message {
   getSignersBytes_asB64(): string;
   setSignersBytes(value: Uint8Array | string): LatestSigners;
 
-  getSortedSigsList(): Array<AddrSig>;
-  setSortedSigsList(value: Array<AddrSig>): LatestSigners;
-  clearSortedSigsList(): LatestSigners;
-  addSortedSigs(value?: AddrSig, index?: number): AddrSig;
+  getTriggerTime(): number;
+  setTriggerTime(value: number): LatestSigners;
 
-  getUpdateTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setUpdateTime(value?: google_protobuf_timestamp_pb.Timestamp): LatestSigners;
-  hasUpdateTime(): boolean;
-  clearUpdateTime(): LatestSigners;
+  getLastSignTime(): number;
+  setLastSignTime(value: number): LatestSigners;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LatestSigners.AsObject;
@@ -589,8 +665,8 @@ export namespace LatestSigners {
   export type AsObject = {
     sortedSignersList: Array<Signer.AsObject>,
     signersBytes: Uint8Array | string,
-    sortedSigsList: Array<AddrSig.AsObject>,
-    updateTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    triggerTime: number,
+    lastSignTime: number,
   }
 }
 
@@ -605,4 +681,7 @@ export enum XferStatus {
   REFUND_DONE = 7,
   BAD_XFER_DISABLED = 8,
   BAD_DEST_CHAIN = 9,
+  EXCEED_MAX_OUT_AMOUNT = 10,
+  XFER_DELAYED = 11,
+  BAD_ADDRESS = 12,
 }

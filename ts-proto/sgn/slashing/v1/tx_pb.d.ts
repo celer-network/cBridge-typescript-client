@@ -1,6 +1,6 @@
 import * as jspb from 'google-protobuf'
 
-import * as sgn_slash_v1_slash_pb from '../../../sgn/slash/v1/slash_pb';
+import * as sgn_slashing_v1_slashing_pb from '../../../sgn/slashing/v1/slashing_pb';
 import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
 
 

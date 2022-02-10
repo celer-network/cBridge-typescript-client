@@ -4,6 +4,7 @@ import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
 import * as google_api_annotations_pb from '../../../google/api/annotations_pb';
 import * as cosmos_base_query_v1beta1_pagination_pb from '../../../cosmos/base/query/v1beta1/pagination_pb';
 import * as cosmos_base_v1beta1_coin_pb from '../../../cosmos/base/v1beta1/coin_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
 import * as sgn_farming_v1_farming_pb from '../../../sgn/farming/v1/farming_pb';
 
 
@@ -128,10 +129,10 @@ export namespace QueryTokensRequest {
 }
 
 export class QueryTokensResponse extends jspb.Message {
-  getTokensList(): Array<sgn_farming_v1_farming_pb.ERC20Token>;
-  setTokensList(value: Array<sgn_farming_v1_farming_pb.ERC20Token>): QueryTokensResponse;
+  getTokensList(): Array<sgn_common_v1_common_pb.ERC20Token>;
+  setTokensList(value: Array<sgn_common_v1_common_pb.ERC20Token>): QueryTokensResponse;
   clearTokensList(): QueryTokensResponse;
-  addTokens(value?: sgn_farming_v1_farming_pb.ERC20Token, index?: number): sgn_farming_v1_farming_pb.ERC20Token;
+  addTokens(value?: sgn_common_v1_common_pb.ERC20Token, index?: number): sgn_common_v1_common_pb.ERC20Token;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueryTokensResponse.AsObject;
@@ -143,7 +144,7 @@ export class QueryTokensResponse extends jspb.Message {
 
 export namespace QueryTokensResponse {
   export type AsObject = {
-    tokensList: Array<sgn_farming_v1_farming_pb.ERC20Token.AsObject>,
+    tokensList: Array<sgn_common_v1_common_pb.ERC20Token.AsObject>,
   }
 }
 
@@ -170,8 +171,8 @@ export namespace QueryTokenRequest {
 }
 
 export class QueryTokenResponse extends jspb.Message {
-  getToken(): sgn_farming_v1_farming_pb.ERC20Token | undefined;
-  setToken(value?: sgn_farming_v1_farming_pb.ERC20Token): QueryTokenResponse;
+  getToken(): sgn_common_v1_common_pb.ERC20Token | undefined;
+  setToken(value?: sgn_common_v1_common_pb.ERC20Token): QueryTokenResponse;
   hasToken(): boolean;
   clearToken(): QueryTokenResponse;
 
@@ -185,7 +186,79 @@ export class QueryTokenResponse extends jspb.Message {
 
 export namespace QueryTokenResponse {
   export type AsObject = {
-    token?: sgn_farming_v1_farming_pb.ERC20Token.AsObject,
+    token?: sgn_common_v1_common_pb.ERC20Token.AsObject,
+  }
+}
+
+export class QueryRewardContractsRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryRewardContractsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryRewardContractsRequest): QueryRewardContractsRequest.AsObject;
+  static serializeBinaryToWriter(message: QueryRewardContractsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryRewardContractsRequest;
+  static deserializeBinaryFromReader(message: QueryRewardContractsRequest, reader: jspb.BinaryReader): QueryRewardContractsRequest;
+}
+
+export namespace QueryRewardContractsRequest {
+  export type AsObject = {
+  }
+}
+
+export class QueryRewardContractsResponse extends jspb.Message {
+  getRewardContractsList(): Array<sgn_common_v1_common_pb.ContractInfo>;
+  setRewardContractsList(value: Array<sgn_common_v1_common_pb.ContractInfo>): QueryRewardContractsResponse;
+  clearRewardContractsList(): QueryRewardContractsResponse;
+  addRewardContracts(value?: sgn_common_v1_common_pb.ContractInfo, index?: number): sgn_common_v1_common_pb.ContractInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryRewardContractsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryRewardContractsResponse): QueryRewardContractsResponse.AsObject;
+  static serializeBinaryToWriter(message: QueryRewardContractsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryRewardContractsResponse;
+  static deserializeBinaryFromReader(message: QueryRewardContractsResponse, reader: jspb.BinaryReader): QueryRewardContractsResponse;
+}
+
+export namespace QueryRewardContractsResponse {
+  export type AsObject = {
+    rewardContractsList: Array<sgn_common_v1_common_pb.ContractInfo.AsObject>,
+  }
+}
+
+export class QueryRewardContractRequest extends jspb.Message {
+  getChainId(): number;
+  setChainId(value: number): QueryRewardContractRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryRewardContractRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryRewardContractRequest): QueryRewardContractRequest.AsObject;
+  static serializeBinaryToWriter(message: QueryRewardContractRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryRewardContractRequest;
+  static deserializeBinaryFromReader(message: QueryRewardContractRequest, reader: jspb.BinaryReader): QueryRewardContractRequest;
+}
+
+export namespace QueryRewardContractRequest {
+  export type AsObject = {
+    chainId: number,
+  }
+}
+
+export class QueryRewardContractResponse extends jspb.Message {
+  getRewardContract(): sgn_common_v1_common_pb.ContractInfo | undefined;
+  setRewardContract(value?: sgn_common_v1_common_pb.ContractInfo): QueryRewardContractResponse;
+  hasRewardContract(): boolean;
+  clearRewardContract(): QueryRewardContractResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): QueryRewardContractResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: QueryRewardContractResponse): QueryRewardContractResponse.AsObject;
+  static serializeBinaryToWriter(message: QueryRewardContractResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): QueryRewardContractResponse;
+  static deserializeBinaryFromReader(message: QueryRewardContractResponse, reader: jspb.BinaryReader): QueryRewardContractResponse;
+}
+
+export namespace QueryRewardContractResponse {
+  export type AsObject = {
+    rewardContract?: sgn_common_v1_common_pb.ContractInfo.AsObject,
   }
 }
 

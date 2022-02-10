@@ -164,5 +164,91 @@ export class MsgClient {
     this.methodInfoSendMySig);
   }
 
+  methodInfoUpdateLatestSigners = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Msg/UpdateLatestSigners',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_tx_pb.MsgUpdateLatestSigners,
+    sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp,
+    (request: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSigners) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp.deserializeBinary
+  );
+
+  updateLatestSigners(
+    request: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSigners,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp>;
+
+  updateLatestSigners(
+    request: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSigners,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp>;
+
+  updateLatestSigners(
+    request: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSigners,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_tx_pb.MsgUpdateLatestSignersResp) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Msg/UpdateLatestSigners',
+        request,
+        metadata || {},
+        this.methodInfoUpdateLatestSigners,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Msg/UpdateLatestSigners',
+    request,
+    metadata || {},
+    this.methodInfoUpdateLatestSigners);
+  }
+
+  methodInfoSyncFarming = new grpcWeb.MethodDescriptor(
+    '/sgn.cbridge.v1.Msg/SyncFarming',
+    grpcWeb.MethodType.UNARY,
+    sgn_cbridge_v1_tx_pb.MsgSyncFarming,
+    sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse,
+    (request: sgn_cbridge_v1_tx_pb.MsgSyncFarming) => {
+      return request.serializeBinary();
+    },
+    sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse.deserializeBinary
+  );
+
+  syncFarming(
+    request: sgn_cbridge_v1_tx_pb.MsgSyncFarming,
+    metadata: grpcWeb.Metadata | null): Promise<sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse>;
+
+  syncFarming(
+    request: sgn_cbridge_v1_tx_pb.MsgSyncFarming,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse) => void): grpcWeb.ClientReadableStream<sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse>;
+
+  syncFarming(
+    request: sgn_cbridge_v1_tx_pb.MsgSyncFarming,
+    metadata: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: sgn_cbridge_v1_tx_pb.MsgSyncFarmingResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/sgn.cbridge.v1.Msg/SyncFarming',
+        request,
+        metadata || {},
+        this.methodInfoSyncFarming,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/sgn.cbridge.v1.Msg/SyncFarming',
+    request,
+    metadata || {},
+    this.methodInfoSyncFarming);
+  }
+
 }
 

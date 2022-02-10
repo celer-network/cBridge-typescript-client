@@ -192,9 +192,6 @@ export class Params extends jspb.Message {
   getSyncerDuration(): number;
   setSyncerDuration(value: number): Params;
 
-  getEpochLength(): number;
-  setEpochLength(value: number): Params;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Params.AsObject;
   static toObject(includeInstance: boolean, msg: Params): Params.AsObject;
@@ -206,7 +203,6 @@ export class Params extends jspb.Message {
 export namespace Params {
   export type AsObject = {
     syncerDuration: number,
-    epochLength: number,
   }
 }
 

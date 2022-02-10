@@ -1,22 +1,20 @@
 import * as jspb from 'google-protobuf'
 
 import * as gogoproto_gogo_pb from '../../../gogoproto/gogo_pb';
-import * as sgn_slash_v1_slash_pb from '../../../sgn/slash/v1/slash_pb';
+import * as sgn_common_v1_common_pb from '../../../sgn/common/v1/common_pb';
+import * as sgn_pegbridge_v1_pegbridge_pb from '../../../sgn/pegbridge/v1/pegbridge_pb';
 
 
 export class GenesisState extends jspb.Message {
-  getParams(): sgn_slash_v1_slash_pb.Params | undefined;
-  setParams(value?: sgn_slash_v1_slash_pb.Params): GenesisState;
+  getParams(): sgn_pegbridge_v1_pegbridge_pb.Params | undefined;
+  setParams(value?: sgn_pegbridge_v1_pegbridge_pb.Params): GenesisState;
   hasParams(): boolean;
   clearParams(): GenesisState;
 
-  getSlashesList(): Array<sgn_slash_v1_slash_pb.Slash>;
-  setSlashesList(value: Array<sgn_slash_v1_slash_pb.Slash>): GenesisState;
-  clearSlashesList(): GenesisState;
-  addSlashes(value?: sgn_slash_v1_slash_pb.Slash, index?: number): sgn_slash_v1_slash_pb.Slash;
-
-  getSlashNonce(): number;
-  setSlashNonce(value: number): GenesisState;
+  getConfig(): sgn_pegbridge_v1_pegbridge_pb.PegConfig | undefined;
+  setConfig(value?: sgn_pegbridge_v1_pegbridge_pb.PegConfig): GenesisState;
+  hasConfig(): boolean;
+  clearConfig(): GenesisState;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenesisState.AsObject;
@@ -28,9 +26,8 @@ export class GenesisState extends jspb.Message {
 
 export namespace GenesisState {
   export type AsObject = {
-    params?: sgn_slash_v1_slash_pb.Params.AsObject,
-    slashesList: Array<sgn_slash_v1_slash_pb.Slash.AsObject>,
-    slashNonce: number,
+    params?: sgn_pegbridge_v1_pegbridge_pb.Params.AsObject,
+    config?: sgn_pegbridge_v1_pegbridge_pb.PegConfig.AsObject,
   }
 }
 
