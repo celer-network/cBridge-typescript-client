@@ -6,10 +6,10 @@ chains with lower costs. Learn more about flow and terminology from this doc:
 
 ## Folder Structure
 
-[examples](./examples): Ready-to-run code examples to call the cBridge gateway via the REST API.
-[contract](./contract): Generated cBridge contract ABIs and bindings.
-[proto](./proto): gRPC-Web Protobuf definitions.
-[ts-proto](./ts-proto): Generated .d.ts gRPC-Web bindings.
+- [examples](./examples): Ready-to-run code examples to call the cBridge gateway via the REST API.
+- [contract](./contract): Generated cBridge contract ABIs and bindings.
+- [proto](./proto): gRPC-Web Protobuf definitions.
+- [ts-proto](./ts-proto): Generated .d.ts gRPC-Web bindings.
 
 ## Quick Start
 
@@ -17,8 +17,8 @@ chains with lower costs. Learn more about flow and terminology from this doc:
 
 Set `CBRIDGE_GATEWAY_URL` to one of the following in `.env`:
 
-Testnet: https://cbridge-v2-test.celer.network
-Mainnet: https://cbridge-prod2.celer.network
+- Testnet: https://cbridge-v2-test.celer.network
+- Mainnet: https://cbridge-prod2.celer.network
 
 Run via:
 
@@ -34,11 +34,7 @@ node examples/refund.js
 
 ### Refund via gRPC-Web API
 
-1. Install grpc-web
-
-https://github.com/grpc/grpc-web
-
-Install gRPC-Web:
+1. Install [grpc-web](https://github.com/grpc/grpc-web)
 
 ```sh
 npm install grpc-web
